@@ -1,18 +1,10 @@
 {
-	"m-4": {
+	"m-2": {
 		"style": {
-			"marginTop": 16,
-			"marginRight": 16,
-			"marginBottom": 16,
-			"marginLeft": 16
-		}
-	},
-	"m-16": {
-		"style": {
-			"marginTop": 64,
-			"marginRight": 64,
-			"marginBottom": 64,
-			"marginLeft": 64
+			"marginTop": 8,
+			"marginRight": 8,
+			"marginBottom": 8,
+			"marginLeft": 8
 		}
 	},
 	"m-12": {
@@ -23,44 +15,21 @@
 			"marginLeft": 48
 		}
 	},
-	"m-2": {
-		"style": {
-			"marginTop": 8,
-			"marginRight": 8,
-			"marginBottom": 8,
-			"marginLeft": 8
-		}
-	},
 	"mx-4": {
 		"style": {
 			"marginLeft": 16,
 			"marginRight": 16
 		}
 	},
-	"mx-2": {
+	"my-3": {
 		"style": {
-			"marginLeft": 8,
-			"marginRight": 8
-		}
-	},
-	"mt-2": {
-		"style": {
-			"marginTop": 8
+			"marginTop": 12,
+			"marginBottom": 12
 		}
 	},
 	"mt-6": {
 		"style": {
 			"marginTop": 24
-		}
-	},
-	"mt-20": {
-		"style": {
-			"marginTop": 80
-		}
-	},
-	"mt-12": {
-		"style": {
-			"marginTop": 48
 		}
 	},
 	"flex": {
@@ -73,19 +42,9 @@
 			"height": "100%"
 		}
 	},
-	"<<<<<<< HEAD\n.h-12": {
+	"h-12": {
 		"style": {
 			"height": 48
-		}
-	},
-	"h-20": {
-		"style": {
-			"height": 80
-		}
-	},
-	"h-40": {
-		"style": {
-			"height": 160
 		}
 	},
 	"h-32": {
@@ -93,29 +52,44 @@
 			"height": 128
 		}
 	},
-	"w-2": {
+	"h-16": {
 		"style": {
-			"width": 8
+			"height": 64
 		}
 	},
-	"w-40": {
+	"h-8": {
 		"style": {
-			"width": 160
+			"height": 32
 		}
 	},
-	"w-12": {
+	"h-4": {
 		"style": {
-			"width": 48
-		}
-	},
-	"w-20": {
-		"style": {
-			"width": 80
+			"height": 16
 		}
 	},
 	"w-32": {
 		"style": {
-			"width": "8rem\n=======\n.w-auto {\n  width: auto\n>>>>>>> baf4a7a22da5e11b7977cdabd240603e3e893ac0"
+			"width": 128
+		}
+	},
+	"w-auto": {
+		"style": {
+			"width": "auto"
+		}
+	},
+	"w-16": {
+		"style": {
+			"width": 64
+		}
+	},
+	"w-48": {
+		"style": {
+			"width": 192
+		}
+	},
+	"w-4": {
+		"style": {
+			"width": 16
 		}
 	},
 	"flex-row": {
@@ -172,16 +146,36 @@
 			"backgroundColor": "rgb(191 219 254 / var(--tw-bg-opacity))"
 		}
 	},
+	"bg-orange": {
+		"style": {
+			"--tw-bg-opacity": 1,
+			"backgroundColor": "rgb(247 148 29 / var(--tw-bg-opacity))"
+		}
+	},
 	"bg-white": {
 		"style": {
 			"--tw-bg-opacity": 1,
 			"backgroundColor": "rgb(255 255 255 / var(--tw-bg-opacity))"
 		}
 	},
-	"bg-orange": {
+	"bg-red-200": {
 		"style": {
 			"--tw-bg-opacity": 1,
-			"backgroundColor": "rgb(247 148 29 / var(--tw-bg-opacity))"
+			"backgroundColor": "rgb(254 202 202 / var(--tw-bg-opacity))"
+		}
+	},
+	"bg-green-200": {
+		"style": {
+			"--tw-bg-opacity": 1,
+			"backgroundColor": "rgb(187 247 208 / var(--tw-bg-opacity))"
+		}
+	},
+	"p-1": {
+		"style": {
+			"paddingTop": 4,
+			"paddingRight": 4,
+			"paddingBottom": 4,
+			"paddingLeft": 4
 		}
 	},
 	"p-3": {
@@ -200,14 +194,6 @@
 			"paddingLeft": 8
 		}
 	},
-	"p-1": {
-		"style": {
-			"paddingTop": 4,
-			"paddingRight": 4,
-			"paddingBottom": 4,
-			"paddingLeft": 4
-		}
-	},
 	"px-3": {
 		"style": {
 			"paddingLeft": 12,
@@ -220,10 +206,10 @@
 			"paddingBottom": 4
 		}
 	},
-	"py-4": {
+	"py-2": {
 		"style": {
-			"paddingTop": 16,
-			"paddingBottom": 16
+			"paddingTop": 8,
+			"paddingBottom": 8
 		}
 	},
 	"px-4": {
@@ -232,22 +218,10 @@
 			"paddingRight": 16
 		}
 	},
-	"py-3": {
-		"style": {
-			"paddingTop": 12,
-			"paddingBottom": 12
-		}
-	},
 	"px-2": {
 		"style": {
 			"paddingLeft": 8,
 			"paddingRight": 8
-		}
-	},
-	"py-2": {
-		"style": {
-			"paddingTop": 8,
-			"paddingBottom": 8
 		}
 	},
 	"pt-12": {
@@ -255,45 +229,19 @@
 			"paddingTop": 48
 		}
 	},
-	"<<<<<<< HEAD\n.pt-20": {
+	"pt-32": {
+		"style": {
+			"paddingTop": 128
+		}
+	},
+	"pt-20": {
 		"style": {
 			"paddingTop": 80
 		}
 	},
-	"pt-40": {
-		"style": {
-			"paddingTop": 160
-		}
-	},
-	"pt-36": {
-		"style": {
-			"paddingTop": 144
-		}
-	},
-	"pt-32": {
-		"style": {
-			"paddingTop": 128,
-			"lineHeight": 36
-		}
-	},
-	"text-[12rem]": {
-		"style": {
-			"fontSize": 192
-		}
-	},
-	"text-[3rem]": {
-		"style": {
-			"fontSize": 48
-		}
-	},
-	"text-[2rem]": {
-		"style": {
-			"fontSize": 32
-		}
-	},
 	"text-[2.5rem]": {
 		"style": {
-			"fontSize": "2.5rem\n>>>>>>> baf4a7a22da5e11b7977cdabd240603e3e893ac0"
+			"fontSize": 40
 		}
 	},
 	"font-semibold": {
