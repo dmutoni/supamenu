@@ -1,10 +1,11 @@
 import React from 'react';
+import Logo from '../components/Logo';
+
 import { RootTabScreenProps } from '../types';
-import RegisterScreen from './RegisterScreen';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
-    <RegisterScreen />
+    <Logo />
   );
 }
 
