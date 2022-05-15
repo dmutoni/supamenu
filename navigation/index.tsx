@@ -20,6 +20,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import { TailwindProvider } from 'tailwind-rn';
 import utilities from '../tailwind.json';
+import NearbyResto from '../screens/NearbyResto';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -94,6 +95,14 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="NearbyResto"
+        component={NearbyResto}
+        options={{
+          title: 'Nearby Resto',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

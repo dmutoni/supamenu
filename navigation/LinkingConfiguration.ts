@@ -25,6 +25,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               TabTwoScreen: 'two',
             },
           },
+          NearbyResto: {
+            screens: {
+              NearbyRestoScreen: 'three',
+            },
+          },
         },
       },
       Modal: 'modal',
