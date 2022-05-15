@@ -1,6 +1,8 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import { Image, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
+import Navigation from '../navigation';
 import Button from './Button';
 import Input from './Input';
 import Logo from './Logo';
@@ -9,6 +11,7 @@ import { Text, View } from './Themed'
 
 export default function Login() {
     const tailwind = useTailwind();
+    const navigation = useNavigation();
     return (
         <View style={tailwind('bg-orange h-full')}>
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind('bg-white rounded-tl-2xl rounded-tr-2xl mt-20 h-full px-4')}>
@@ -42,7 +45,7 @@ export default function Login() {
 
                 <View style={tailwind('flex flex-row justify-center items-center pb-16')}>
                     <Text style={tailwind('py-4 text-gray-400 text-sm text-center')}>Don't  have an account?</Text>
-                    <Text style={tailwind('py-4 text-orange text-sm text-center px-2 font-bold')}>Sign in</Text>
+                    <Text style={tailwind('py-4 text-orange text-sm text-center px-2 font-bold')} onPress={() => navigation.navigate('Register')}>Register</Text>
                 </View>
             </ScrollView>
         </View>
