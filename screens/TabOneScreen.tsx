@@ -1,14 +1,11 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { useTailwind } from 'tailwind-rn/dist';
+import Logo from '../components/Logo';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-  const tailwind = useTailwind();
   return (
+<<<<<<< HEAD
     <SafeAreaView style={tailwind('h-full')}>
       <View style={tailwind('pt-12 items-center')}>
         <View style={tailwind('bg-blue-200 px-3 py-1 rounded-full')}>
@@ -18,22 +15,9 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
         </View>
       </View>
     </SafeAreaView>
+=======
+    <Logo />
+>>>>>>> aa9c44560822b76998b731504fd5103f6f6c17d4
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
