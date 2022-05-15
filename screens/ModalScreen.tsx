@@ -4,6 +4,8 @@ import { Platform, StyleSheet } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { SafeAreaView, View, Text } from 'react-native';
 import { useTailwind } from 'tailwind-rn';
+import React from 'react';
+import { SearchBar } from 'react-native-screens';
 export default function ModalScreen() {
   const tailwind = useTailwind();
   return (
@@ -13,6 +15,9 @@ export default function ModalScreen() {
           <Text style={tailwind('text-blue-800 font-semibold')}>
             Hello Tailwind
           </Text>
+          <SearchBar>
+            
+          </SearchBar>
         </View>
       </View>
     </SafeAreaView>
