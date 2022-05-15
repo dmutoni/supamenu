@@ -20,12 +20,9 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import { TailwindProvider } from 'tailwind-rn';
 import utilities from '../tailwind.json';
-<<<<<<< HEAD
 import NearbyResto from '../screens/NearbyResto';
-=======
 import Register from '../components/Register';
 import Login from '../components/Login';
->>>>>>> aa9c44560822b76998b731504fd5103f6f6c17d4
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
