@@ -73,7 +73,7 @@
 			"height": "100%"
 		}
 	},
-	"h-12": {
+	"<<<<<<< HEAD\n.h-12": {
 		"style": {
 			"height": 48
 		}
@@ -115,7 +115,7 @@
 	},
 	"w-32": {
 		"style": {
-			"width": 128
+			"width": "8rem\n=======\n.w-auto {\n  width: auto\n>>>>>>> baf4a7a22da5e11b7977cdabd240603e3e893ac0"
 		}
 	},
 	"flex-row": {
@@ -126,6 +126,11 @@
 	"items-center": {
 		"style": {
 			"alignItems": "center"
+		}
+	},
+	"justify-center": {
+		"style": {
+			"justifyContent": "center"
 		}
 	},
 	"rounded-full": {
@@ -250,7 +255,7 @@
 			"paddingTop": 48
 		}
 	},
-	"pt-20": {
+	"<<<<<<< HEAD\n.pt-20": {
 		"style": {
 			"paddingTop": 80
 		}
@@ -267,7 +272,28 @@
 	},
 	"pt-32": {
 		"style": {
-			"paddingTop": 128
+			"paddingTop": 128,
+			"lineHeight": 36
+		}
+	},
+	"text-[12rem]": {
+		"style": {
+			"fontSize": 192
+		}
+	},
+	"text-[3rem]": {
+		"style": {
+			"fontSize": 48
+		}
+	},
+	"text-[2rem]": {
+		"style": {
+			"fontSize": 32
+		}
+	},
+	"text-[2.5rem]": {
+		"style": {
+			"fontSize": "2.5rem\n>>>>>>> baf4a7a22da5e11b7977cdabd240603e3e893ac0"
 		}
 	},
 	"font-semibold": {
@@ -275,10 +301,27 @@
 			"fontWeight": "600"
 		}
 	},
+	"font-bold": {
+		"style": {
+			"fontWeight": "700"
+		}
+	},
 	"text-blue-800": {
 		"style": {
 			"--tw-text-opacity": 1,
 			"color": "rgb(30 64 175 / var(--tw-text-opacity))"
+		}
+	},
+	"text-orange": {
+		"style": {
+			"--tw-text-opacity": 1,
+			"color": "rgb(247 148 29 / var(--tw-text-opacity))"
+		}
+	},
+	"text-black": {
+		"style": {
+			"--tw-text-opacity": 1,
+			"color": "rgb(0 0 0 / var(--tw-text-opacity))"
 		}
 	}
 }
