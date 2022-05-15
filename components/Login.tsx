@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
 import Navigation from '../navigation';
@@ -12,6 +12,8 @@ import { Text, View } from './Themed'
 export default function Login() {
     const tailwind = useTailwind();
     const navigation = useNavigation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     return (
         <View style={tailwind('bg-orange h-full')}>
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind('bg-white rounded-tl-2xl rounded-tr-2xl mt-20 h-full px-4')}>
@@ -21,8 +23,8 @@ export default function Login() {
 
                 <Text style={tailwind('text-center text-base')}>Welcome...</Text>
                 <Text style={tailwind('text-center text-sm py-5 text-gray-400')}>Sign in to continue</Text>
-                <Input placeholder='Your email' name={require(`../assets/icons/mail.png`)} />
-                <Input placeholder='Your password' name={require(`../assets/icons/lock.png`)} />
+                <Input placeholder='Your email' value={email} onChangeText={text => setEmail(text)} name={require(`../assets/icons/mail.png`)} />
+                <Input placeholder='Your password' value={password} onChangeText={text => setPassword(text)} name={require(`../assets/icons/lock.png`)} />
                 <Button title='Sign in' />
 
                 <View style={tailwind('flex flex-row my-4 mx-16 items-center justify-center')}>
