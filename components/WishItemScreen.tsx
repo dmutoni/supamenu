@@ -26,9 +26,9 @@ export default function WishItemScreen({ name, ingredients, price, amount, curre
 
                 <View style={tailwind('flex mt-1 flex-row justify-between items-center')}>
                     <View style={tailwind('flex flex-row')}>
-                        <Text style={tailwind('text-orange font-bold text-xl mr-1')}>{currency}</Text>
+                        <Text style={tailwind('text-orange font-bold text-lg mr-1')}>{currency}</Text>
 
-                        <Text style={tailwind('text-orange font-bold text-xl')}>{price}</Text>
+                        <Text style={tailwind('text-orange font-bold text-lg')}>{price}</Text>
                     </View>
                     <View style={tailwind('flex flex-row bg-white px-2 h-8 rounded-md justify-center items-center')}>
                         <AntDesign name="minus" size={15} color='orange' />
