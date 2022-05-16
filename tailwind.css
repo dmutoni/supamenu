@@ -63,6 +63,11 @@
   margin-bottom: 2rem
 }
 
+.my-28 {
+  margin-top: 7rem;
+  margin-bottom: 7rem
+}
+
 .mt-4 {
   margin-top: 1rem
 }
@@ -143,6 +148,14 @@
   margin-left: 0.5rem
 }
 
+.mt-28 {
+  margin-top: 7rem
+}
+
+.mb-24 {
+  margin-bottom: 6rem
+}
+
 .flex {
   display: flex
 }
@@ -215,6 +228,10 @@
   height: 28%
 }
 
+.h-48 {
+  height: 12rem
+}
+
 .w-full {
   width: 100%
 }
@@ -281,6 +298,10 @@
 
 .w-3\/4 {
   width: 75%
+}
+
+.flex-1 {
+  flex: 1 1 0%
 }
 
 .flex-row {
@@ -519,6 +540,10 @@
 
 .pt-8 {
   padding-top: 2rem
+}
+
+.pt-5 {
+  padding-top: 1.25rem
 }
 
 .text-center {

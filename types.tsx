@@ -23,6 +23,7 @@ export type RootStackParamList = {
   NearbyResto: undefined;
   Checkout: undefined;
   CheckForDetails: undefined;
+  FeedBack: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

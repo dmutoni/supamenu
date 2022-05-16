@@ -1,6 +1,6 @@
 import { Fontisto } from '@expo/vector-icons'
 import React from 'react'
-import { Image } from 'react-native'
+import { Image, TouchableOpacity } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
 import { RootStackScreenProps } from '../types'
 import Button from './Button'
@@ -23,12 +23,12 @@ export default function CheckForDetails({ navigation }: RootStackScreenProps<'Ch
                     <Text style={tailwind('text-white text-lg ')}>
                         your contact
                     </Text>
-                    <View style={tailwind('bg-black flex flex-row my-8')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('FeedBack')} style={tailwind('bg-black flex flex-row my-8')}>
                         <Text style={tailwind('font-bold text-white text-lg text-red-300 mr-4')}>
                             Check details
                         </Text>
                         <Fontisto name="arrow-right-l" size={30} color="orange" />
-                    </View>
+                    </TouchableOpacity>
                 </View>
                 <View style={tailwind('mx-4 bg-black')}>
                     <Button title='Download invoice' />
