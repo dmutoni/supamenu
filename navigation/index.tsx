@@ -20,6 +20,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import { TailwindProvider } from 'tailwind-rn';
 import utilities from '../tailwind.json';
+import NearbyResto from '../screens/NearbyResto';
 import Register from '../components/Register';
 import Login from '../components/Login';
 
@@ -47,6 +48,7 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
@@ -112,7 +114,18 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
+<<<<<<< HEAD
 
+=======
+      <BottomTab.Screen
+        name="NearbyResto"
+        component={NearbyResto}
+        options={{
+          title: 'Nearby Resto',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+>>>>>>> a99158c53a9b289fbcc2a51814248f08e598f19c
     </BottomTab.Navigator>
   );
 }

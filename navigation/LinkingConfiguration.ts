@@ -25,6 +25,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               WishListScreen: 'two',
             },
           },
+          NearbyResto: {
+            screens: {
+              NearbyRestoScreen: 'three',
+            },
+          },
         },
       },
       Modal: 'modal',
