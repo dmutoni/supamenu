@@ -11,7 +11,7 @@ export default function FeedBack({ navigation }: RootStackScreenProps<'FeedBack'
     return (
         <View style={tailwind('bg-black h-full flex items-center')}>
             <View style={tailwind('my-28')}></View>
-            <Text style={tailwind('text-orange text-lg')}>Yayy!</Text>
+            <Text style={tailwind('text-orange text-lg')}>Yay!</Text>
             <Text style={tailwind('text-orange text-lg')}>We value your feedback</Text>
             <Text style={tailwind('text-orange text-lg')}>Please rate your experience</Text>
             <Text style={tailwind('text-orange text-lg')}>below:</Text>

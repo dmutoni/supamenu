@@ -194,6 +194,14 @@
   height: 100vh
 }
 
+.h-28 {
+  height: 7rem
+}
+
+.h-10 {
+  height: 2.5rem
+}
+
 .w-full {
   width: 100%
 }
@@ -240,6 +248,10 @@
 
 .w-60 {
   width: 15rem
+}
+
+.w-10 {
+  width: 2.5rem
 }
 
 .flex-row {

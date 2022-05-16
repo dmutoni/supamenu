@@ -15,7 +15,7 @@ export function OneResto(props: TOneResto) {
             </View>
             <View style={tailwind('mx-4 flex justify-center')}>
                 <Text style={tailwind('font-bold')}>{props.title}</Text>
-                <Text style={tailwind('text-xs')}>{props.tags}</Text>
+                <Text style={tailwind('text-sm')}>{props.tags}</Text>
             </View>
         </TouchableOpacity>
     )

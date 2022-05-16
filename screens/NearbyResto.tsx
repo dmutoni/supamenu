@@ -8,7 +8,7 @@ import Separator from '../components/Separator';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
-export default function NearbyResto({ navigation }: RootTabScreenProps<'TabTwo'>) {
+export default function NearbyResto({ navigation }: RootTabScreenProps<'Timer'>) {
     const tailwind = useTailwind();
     const popAction = StackActions.pop(1);
     return (

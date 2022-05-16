@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import { AntDesign, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -23,12 +23,11 @@ import utilities from '../tailwind.json';
 import NearbyResto from '../screens/NearbyResto';
 import Register from '../components/Register';
 import Login from '../components/Login';
-import Checkout from '../components/Checkout';
 import CheckoutScreen from '../screens/CheckoutScreen';
-import CheckForDetails from '../components/CheckForDetails';
 import CheckForDetailsScreen from '../screens/CheckForDetailsScreen';
 import FeedBackScreen from '../screens/FeedBackScreen';
 import ChooseMenuScreen from '../screens/ChooseMenuScreen';
+import ScannerScreen from '../screens/ScannerScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -98,8 +97,9 @@ function BottomTabNavigator() {
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           headerShown: false,
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          tabBarIcon: ({ color }) => <AntDesign name="home" color={color}
+            style={{ marginRight: 15 }} size={24} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -114,23 +114,45 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={WishListScreen}
+        component={NearbyResto}
         options={{
-          title: 'Tab Two',
+          title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="notifications-outline" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="NearbyResto"
+        name="Scan"
+        component={ScannerScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="credit-card-scan-outline" size={24} color={color} />,
+        }}
+      />
+
+      <BottomTab.Screen
+        name="Timer"
         component={NearbyResto}
         options={{
           headerShown: false,
-          title: 'Nearby Resto',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          tabBarIcon: ({ color }) => <Ionicons name="md-time-outline" size={24} color={color} />,
         }}
       />
+
+      <BottomTab.Screen
+        name="Cart"
+        component={WishListScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          tabBarIcon: ({ color }) => <Ionicons name="md-cart-outline" size={24} color={color} />,
+        }}
+      />
+
     </BottomTab.Navigator>
+
   );
 }
 

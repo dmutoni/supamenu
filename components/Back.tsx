@@ -11,8 +11,8 @@ export interface IBackProps {
 export default function Back({ onPress, iconColor = "orange" }: IBackProps) {
     const tailwind = useTailwind();
     return (
-        <TouchableOpacity onPress={onPress} style={tailwind('bg-gray-100 rounded-md w-12 h-12 justify-center items-center')}>
-            <Fontisto name="angle-left" size={24} color={iconColor} />
+        <TouchableOpacity onPress={onPress} style={tailwind('bg-gray-100 my-2 rounded-md w-10 h-10 justify-center items-center')}>
+            <Fontisto name="angle-left" size={17} color={iconColor} />
         </TouchableOpacity>
     )
 }

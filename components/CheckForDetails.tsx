@@ -13,7 +13,7 @@ export default function CheckForDetails({ navigation }: RootStackScreenProps<'Ch
         <View style={tailwind('bg-black h-full')}>
             <View style={tailwind('mt-12 bg-black')}>
                 <Image source={require('../assets/images/payment.png')} style={tailwind(' ml-4')} />
-                <View style={tailwind('bg-black flex items-center justify-center')}>
+                <View style={tailwind('bg-black flex items-center justify-center py-8')}>
                     <Text style={tailwind('text-orange text-xl font-bold')}>
                         Payment successful
                     </Text>
@@ -30,10 +30,10 @@ export default function CheckForDetails({ navigation }: RootStackScreenProps<'Ch
                         <Fontisto name="arrow-right-l" size={30} color="orange" />
                     </TouchableOpacity>
                 </View>
-                <View style={tailwind('mx-4 bg-black')}>
+                <View style={tailwind('mx-8 bg-black')}>
                     <Button title='Download invoice' />
                 </View>
-                <View style={tailwind('bg-black')}>
+                <View style={tailwind('bg-black py-8')}>
                     <Logo darkMode={true} />
                 </View>
             </View>

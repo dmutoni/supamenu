@@ -45,16 +45,16 @@ export default function Checkout({ navigation }: RootStackScreenProps<'Checkout'
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={tailwind('mx-8 mt-12')}>
+            <View style={tailwind('mx-8 mt-12 py-4')}>
                 <ModeOfPayment name='Mobile Money' image={require('../assets/images/mobile-money.png')} />
                 <ModeOfPayment name='Airtel Money' image={require('../assets/images/airtel-money.png')} />
                 <ModeOfPayment name='Cash' image={require('../assets/images/cash.png')} />
             </View>
-            <View style={tailwind('flex justify-center items-center')}>
+            <View style={tailwind('flex justify-center items-center py-4')}>
                 <Text style={tailwind('text-gray-500 text-sm')}>We will send you an order details to your</Text>
                 <Text style={tailwind('text-gray-500 text-sm')}>email after the successful payment</Text>
             </View>
-            <TouchableOpacity style={tailwind('bg-green m-4 flex flex-row  py-5 rounded-xl flex justify-center items-center')} onPress={() => navigation.navigate('CheckForDetails')}>
+            <TouchableOpacity style={tailwind('bg-green m-4 flex flex-row py-5 rounded-xl flex justify-center items-center')} onPress={() => navigation.navigate('CheckForDetails')}>
                 <Fontisto name="locked" size={24} color="white" />
                 <Text style={tailwind('ml-4 text-white font-bold text-lg')}>Pay for the order</Text>
             </TouchableOpacity>
