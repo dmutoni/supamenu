@@ -134,6 +134,10 @@
   margin-top: 3rem
 }
 
+.ml-2 {
+  margin-left: 0.5rem
+}
+
 .flex {
   display: flex
 }

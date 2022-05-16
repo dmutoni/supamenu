@@ -1,3 +1,4 @@
+import { Fontisto, MaterialCommunityIcons } from '@expo/vector-icons';
 import { StackActions } from '@react-navigation/native';
 import React from 'react'
 import { Image, TouchableOpacity } from 'react-native';
@@ -49,6 +50,14 @@ export default function Checkout({ navigation }: RootStackScreenProps<'Checkout'
                 <ModeOfPayment name='Airtel Money' image={require('../assets/images/airtel-money.png')} />
                 <ModeOfPayment name='Cash' image={require('../assets/images/cash.png')} />
             </View>
+            <View style={tailwind('flex justify-center items-center')}>
+                <Text style={tailwind('text-gray-500 text-sm')}>We will send you an order details to your</Text>
+                <Text style={tailwind('text-gray-500 text-sm')}>email after the successful payment</Text>
+            </View>
+            <TouchableOpacity style={tailwind('bg-green m-4 flex flex-row  py-5 rounded-xl flex justify-center items-center')}>
+                <Fontisto name="locked" size={24} color="white" />
+                <Text style={tailwind('ml-4 text-white font-bold text-lg')}>Pay for the order</Text>
+            </TouchableOpacity>
         </View>
     )
 }
