@@ -6,6 +6,7 @@ import { useTailwind } from 'tailwind-rn/dist';
 import { RootStackParamList, RootStackScreenProps, RootTabScreenProps } from '../types';
 import Back from './Back'
 import Button from './Button';
+import ModeOfPayment from './ModeOfPayment';
 import { Text, View } from './Themed'
 
 export default function Checkout({ navigation }: RootStackScreenProps<'Checkout'>) {
@@ -42,6 +43,11 @@ export default function Checkout({ navigation }: RootStackScreenProps<'Checkout'
                         <Text style={tailwind('text-white font-bold text-lg')}>Mobile & Cash</Text>
                     </TouchableOpacity>
                 </View>
+            </View>
+            <View style={tailwind('mx-8 mt-12')}>
+                <ModeOfPayment name='Mobile Money' image={require('../assets/images/mobile-money.png')} />
+                <ModeOfPayment name='Airtel Money' image={require('../assets/images/airtel-money.png')} />
+                <ModeOfPayment name='Cash' image={require('../assets/images/cash.png')} />
             </View>
         </View>
     )

@@ -14,6 +14,10 @@
   margin: 1rem
 }
 
+.m-8 {
+  margin: 2rem
+}
+
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem
@@ -47,6 +51,11 @@
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem
+}
+
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem
 }
 
 .mt-4 {
@@ -119,6 +128,10 @@
 
 .ml-12 {
   margin-left: 3rem
+}
+
+.mt-12 {
+  margin-top: 3rem
 }
 
 .flex {
