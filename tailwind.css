@@ -58,6 +58,11 @@
   margin-right: 2rem
 }
 
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem
+}
+
 .mt-4 {
   margin-top: 1rem
 }
@@ -427,6 +432,11 @@
   background-color: rgb(96 165 250 / var(--tw-bg-opacity))
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity))
+}
+
 .p-5 {
   padding: 1.25rem
 }
@@ -616,4 +626,14 @@
 .text-green {
   --tw-text-opacity: 1;
   color: rgb(37 212 130 / var(--tw-text-opacity))
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity))
+}
+
+.text-red-300 {
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity))
 }
