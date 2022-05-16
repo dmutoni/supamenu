@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { Image, ScrollView } from 'react-native';
+import { Alert, Image, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
 import Navigation from '../navigation';
 import Button from './Button';
@@ -9,11 +9,32 @@ import Logo from './Logo';
 import Separator from './Separator';
 import { Text, View } from './Themed'
 
+import Validator from "validatorjs";
+
+// @ts-ignore
+import en from "validatorjs/src/lang/en"
+
 export default function Login() {
     const tailwind = useTailwind();
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const handleLogin = async () => {
+
+        Validator.setMessages("en", en)
+
+        const valid = new Validator({ email, password }, {
+            email: "required|email|min:3",
+            password: "required|string|min:3",
+        })
+
+        if (valid.fails()) {
+            Alert.alert("Error", Object.values(valid.errors.all())[0][0])
+            return;
+        }
+    }
+
     return (
         <View style={tailwind('bg-orange h-full')}>
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind('bg-white rounded-tl-2xl rounded-tr-2xl mt-20 h-full px-4')}>
@@ -23,9 +44,9 @@ export default function Login() {
 
                 <Text style={tailwind('text-center text-base')}>Welcome...</Text>
                 <Text style={tailwind('text-center text-sm py-5 text-gray-400')}>Sign in to continue</Text>
-                <Input placeholder='Your email' value={email} onChangeText={text => setEmail(text)} name={require(`../assets/icons/mail.png`)} />
-                <Input placeholder='Your password' value={password} onChangeText={text => setPassword(text)} name={require(`../assets/icons/lock.png`)} />
-                <Button title='Sign in' />
+                <Input placeholder='Your email' value={email} keyBoardType='email-address' onChangeText={text => setEmail(text)} name={require(`../assets/icons/mail.png`)} />
+                <Input placeholder='Your password' value={password} secureTextEntry={true} onChangeText={text => setPassword(text)} name={require(`../assets/icons/lock.png`)} />
+                <Button title='Sign in' onPress={handleLogin} />
 
                 <View style={tailwind('flex flex-row my-4 mx-16 items-center justify-center')}>
                     <Separator />

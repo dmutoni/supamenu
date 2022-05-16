@@ -57,9 +57,9 @@ export default function Register() {
                 <Text style={tailwind('text-center text-sm py-5 text-gray-400')}>Please fill in the information</Text>
                 <Input placeholder="First name" value={firstName} onChangeText={text => setFirstName(text)} name={require(`../assets/icons/user.png`)} />
                 <Input placeholder="Last name" value={lastName} onChangeText={text => setLastName(text)} name={require(`../assets/icons/user.png`)} />
-                <Input placeholder='Phone number' value={mobile} onChangeText={text => setMobile(text)} name={require(`../assets/icons/phone.png`)} />
-                <Input placeholder='Your email' value={email} onChangeText={text => setEmail(text)} name={require(`../assets/icons/mail.png`)} />
-                <Input placeholder='Your password' value={password} onChangeText={text => setPassword(text)} name={require(`../assets/icons/lock.png`)} />
+                <Input placeholder='Phone number' value={mobile} keyBoardType='phone-pad' onChangeText={text => setMobile(text)} name={require(`../assets/icons/phone.png`)} />
+                <Input placeholder='Your email' value={email} keyBoardType='email-address' onChangeText={text => setEmail(text)} name={require(`../assets/icons/mail.png`)} />
+                <Input placeholder='Your password' value={password} secureTextEntry={true} onChangeText={text => setPassword(text)} name={require(`../assets/icons/lock.png`)} />
                 <Button title='Proceed' onPress={handleRegister} />
 
                 <View style={tailwind('flex flex-row my-4 mx-16 items-center justify-center')}>
