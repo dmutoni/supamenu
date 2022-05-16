@@ -2,6 +2,14 @@
   margin: 1rem
 }
 
+.m-2 {
+  margin: 0.5rem
+}
+
+.m-12 {
+  margin: 3rem
+}
+
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem
@@ -29,6 +37,10 @@
   margin-top: 1rem
 }
 
+.mt-6 {
+  margin-top: 1.5rem
+}
+
 .flex {
   display: flex
 }
@@ -41,12 +53,24 @@
   height: 0.7px
 }
 
+.h-12 {
+  height: 3rem
+}
+
+.h-32 {
+  height: 8rem
+}
+
 .w-auto {
   width: auto
 }
 
 .w-36 {
   width: 9rem
+}
+
+.w-32 {
+  width: 8rem
 }
 
 .flex-row {
@@ -115,6 +139,10 @@
   padding: 0.75rem
 }
 
+.p-1 {
+  padding: 0.25rem
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem
@@ -169,6 +197,10 @@
 
 .pb-6 {
   padding-bottom: 1.5rem
+}
+
+.pt-32 {
+  padding-top: 8rem
 }
 
 .text-center {
