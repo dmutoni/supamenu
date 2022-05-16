@@ -70,6 +70,15 @@ function BottomTabNavigator() {
       initialRouteName="TabOne"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 0,
+          height: 60,
+          borderTopRightRadius: 40,
+          borderTopLeftRadius: 40,
+          marginHorizontal: 1,
+          paddingHorizontal: 20,
+        },
       }}>
       <BottomTab.Screen
         name="TabOne"
@@ -103,6 +112,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
+
     </BottomTab.Navigator>
   );
 }

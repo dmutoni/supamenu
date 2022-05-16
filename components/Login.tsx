@@ -20,6 +20,10 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const goRoot = () => {
+        navigation.navigate('Root');
+    }
+
     const handleLogin = async () => {
 
         Validator.setMessages("en", en)
@@ -33,6 +37,7 @@ export default function Login() {
             Alert.alert("Error", Object.values(valid.errors.all())[0][0])
             return;
         }
+        goRoot();
     }
 
     return (
