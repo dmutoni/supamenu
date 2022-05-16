@@ -9,9 +9,6 @@ module.exports = {
       fontfamily: {
         primary: ['space-mono', 'sanserif'],
       },
-      colors:{
-        orange: "#F7941D"
-      }
     },
    
   },
