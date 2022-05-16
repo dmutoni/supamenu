@@ -4,7 +4,8 @@ module.exports = {
     extend: {
       colors: {
         orange: "#F7941D",
-        violet: "#f8f8fb"
+        violet: "#f8f8fb",
+        green: "#25d482"
       },
       fontfamily: {
         primary: ['space-mono', 'sanserif'],
