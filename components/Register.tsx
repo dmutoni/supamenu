@@ -1,16 +1,26 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react'
-import { ScrollView } from 'react-native';
+import React, { useState } from 'react'
+import { Alert, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
 import Button from './Button';
 import Input from './Input';
 import Logo from './Logo';
 import Separator from './Separator';
 import { Text, View } from './Themed'
+import Validator from "validatorjs";
+
+// @ts-ignore
+import en from "validatorjs/src/lang/en"
 
 export default function Register() {
     const tailwind = useTailwind();
     const navigation = useNavigation();
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [mobile, setMobile] = useState('');
 
     const goToLogin = () => {
         navigation.navigate('Login');
@@ -18,6 +28,26 @@ export default function Register() {
     const goToResto = () => {
         navigation.navigate('NearbyResto')
     }
+
+    const handleRegister = async () => {
+
+        Validator.setMessages("en", en)
+
+        const valid = new Validator({ firstName, lastName, email, password, mobile }, {
+            firstName: "required|string|min:3",
+            lastName: "required|string|min:3",
+            email: "required|email|min:3",
+            password: "required|string|min:3",
+            mobile: "required|string|min:9"
+        })
+
+        if (valid.fails()) {
+            Alert.alert("Error", Object.values(valid.errors.all())[0][0])
+            return;
+        }
+
+    }
+
     return (
         <View style={tailwind('bg-orange h-full')}>
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind('bg-white rounded-tl-2xl rounded-tr-2xl mt-20 h-full px-4')}>
@@ -25,13 +55,15 @@ export default function Register() {
                     <Logo />
                 </View>
 
-                <Text style={tailwind('text-center text-base')}>Welcome...</Text>
+
+                <Text style={tailwind('text-center text-base')} >Welcome...</Text>
                 <Text style={tailwind('text-center text-sm py-5 text-gray-400')}>Please fill in the information</Text>
-                <Input placeholder="Full name" name={require(`../assets/icons/user.png`)} />
-                <Input placeholder='Phone number' name={require(`../assets/icons/phone.png`)} />
-                <Input placeholder='Your email' name={require(`../assets/icons/mail.png`)} />
-                <Input placeholder='Your password' name={require(`../assets/icons/lock.png`)} />
-                <Button title='Proceed' />
+                <Input placeholder="First name" value={firstName} onChangeText={text => setFirstName(text)} name={require(`../assets/icons/user.png`)} />
+                <Input placeholder="Last name" value={lastName} onChangeText={text => setLastName(text)} name={require(`../assets/icons/user.png`)} />
+                <Input placeholder='Phone number' value={mobile} keyBoardType='phone-pad' onChangeText={text => setMobile(text)} name={require(`../assets/icons/phone.png`)} />
+                <Input placeholder='Your email' value={email} keyBoardType='email-address' onChangeText={text => setEmail(text)} name={require(`../assets/icons/mail.png`)} />
+                <Input placeholder='Your password' value={password} secureTextEntry={true} onChangeText={text => setPassword(text)} name={require(`../assets/icons/lock.png`)} />
+                <Button title='Proceed' onPress={handleRegister} />
 
                 <View style={tailwind('flex flex-row my-4 mx-16 items-center justify-center')}>
                     <Separator />

@@ -44,3 +44,45 @@ export type TOneResto = {
   title: string
   tags: string
 }
+
+export interface ILogin {
+  login: string;
+  password: string;
+}
+
+export interface ISignUp {
+  firstName: string;
+  secondName: string;
+  mobile: string;
+  email: string;
+  password: string;
+}
+
+export interface Response<T = unknown> {
+  data: T;
+  success: boolean;
+  message: string;
+}
+
+export enum Status {
+  ACTIVE,
+  INACTIVE,
+}
+export interface LoginResponse<T = unknown> extends Response<T> {
+  token: {
+    accessToken: string;
+    refreshToken: string;
+    tokenType: string;
+    expireInMsec: string;
+  };
+  id: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  username: string;
+  email: string;
+  status: Status;
+  authorities: {
+    authority: string;
+  }
+} 
