@@ -24,6 +24,7 @@ export type RootStackParamList = {
   Checkout: undefined;
   CheckForDetails: undefined;
   FeedBack: undefined;
+  ChooseMenu: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

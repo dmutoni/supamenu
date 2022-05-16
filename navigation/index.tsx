@@ -28,6 +28,7 @@ import CheckoutScreen from '../screens/CheckoutScreen';
 import CheckForDetails from '../components/CheckForDetails';
 import CheckForDetailsScreen from '../screens/CheckForDetailsScreen';
 import FeedBackScreen from '../screens/FeedBackScreen';
+import ChooseMenuScreen from '../screens/ChooseMenuScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -55,6 +56,7 @@ function RootNavigator() {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
+      <Stack.Screen name="ChooseMenu" component={ChooseMenuScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
       <Stack.Screen name="CheckForDetails" component={CheckForDetailsScreen} options={{ headerShown: false }} />
       <Stack.Screen name="FeedBack" component={FeedBackScreen} options={{ headerShown: false }} />
