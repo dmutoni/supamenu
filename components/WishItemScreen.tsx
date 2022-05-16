@@ -16,7 +16,7 @@ export default function WishItemScreen({ name, ingredients, price, amount, curre
     const tailwind = useTailwind();
     return (
         // <View style={tailwind('pt-20 h-full bg-red-200')}>
-        <View style={tailwind('flex flex-row bg-gray-100 h-24 mx-4 rounded-xl p-2')}>
+        <View style={tailwind('flex flex-row bg-gray-100 h-24 rounded-xl p-2')}>
             <View style={tailwind('w-24')}>
                 <Image style={tailwind('p-3 m-2 w-16 h-16 rounded-md')} source={require(`../assets/images/bb.jpg`)} />
             </View>
