@@ -114,9 +114,6 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
-<<<<<<< HEAD
-
-=======
       <BottomTab.Screen
         name="NearbyResto"
         component={NearbyResto}
@@ -125,7 +122,6 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
->>>>>>> a99158c53a9b289fbcc2a51814248f08e598f19c
     </BottomTab.Navigator>
   );
 }

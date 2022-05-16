@@ -5,7 +5,6 @@ import React from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { SafeAreaView, View, Text } from 'react-native';
 import { useTailwind } from 'tailwind-rn';
-import React from 'react';
 import { SearchBar } from 'react-native-screens';
 export default function ModalScreen() {
   const tailwind = useTailwind();
@@ -17,7 +16,7 @@ export default function ModalScreen() {
             Hello Tailwind
           </Text>
           <SearchBar>
-            
+
           </SearchBar>
         </View>
       </View>
