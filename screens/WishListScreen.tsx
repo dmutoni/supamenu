@@ -7,6 +7,7 @@ import { AntDesign, FontAwesome, Fontisto } from '@expo/vector-icons';
 import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import Back from '../components/Back';
 
 const drinks: IItemProps[] = [
     {
@@ -45,9 +46,7 @@ export default function WishListScreen({ navigation }: RootTabScreenProps<'TabTw
     return (
         <View>
             <View style={tailwind('pt-12 h-full mx-4 bg-gray-50')}>
-                <TouchableOpacity onPress={() => navigation.dispatch(popAction)} style={tailwind('bg-gray-100 rounded-md w-12 h-12 justify-center items-center')}>
-                    <Fontisto name="angle-left" size={24} color="orange" />
-                </TouchableOpacity>
+                <Back onPress={() => navigation.dispatch(popAction)} />
                 <View style={tailwind('flex flex-col items-end mb-2 mt-2')}>
                     <Text style={tailwind('text-xl font-bold text-3xl mb-2')}>Choose Kigali</Text>
                     <Text style={tailwind('text-orange text-2xl')}>Drinks</Text>

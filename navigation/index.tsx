@@ -118,6 +118,7 @@ function BottomTabNavigator() {
         name="NearbyResto"
         component={NearbyResto}
         options={{
+          headerShown: false,
           title: 'Nearby Resto',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
