@@ -19,6 +19,7 @@ export type RootStackParamList = {
   NotFound: undefined;
   Login: undefined;
   Register: undefined;
+  NearbyResto: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -39,7 +40,7 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   >;
 
 export type TOneResto = {
-  img: string
+  img?: string
   title: string
   tags: string
 }

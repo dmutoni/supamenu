@@ -15,6 +15,9 @@ export default function Register() {
     const goToLogin = () => {
         navigation.navigate('Login');
     }
+    const goToResto = () => {
+        navigation.navigate('NearbyResto')
+    }
     return (
         <View style={tailwind('bg-orange h-full')}>
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind('bg-white rounded-tl-2xl rounded-tr-2xl mt-20 h-full px-4')}>
@@ -42,6 +45,7 @@ export default function Register() {
                 <View style={tailwind('flex flex-row justify-center items-center pb-16')}>
                     <Text style={tailwind('py-4 text-gray-400 text-sm text-center')}>Already have an account?</Text>
                     <Text style={tailwind('py-4 text-orange text-sm text-center px-2')} onPress={goToLogin}>Sign in</Text>
+                    <Text style={tailwind('py-4 text-orange text-sm text-center px-2')} onPress={goToResto}>One Resto</Text>
                 </View>
             </ScrollView>
         </View>
