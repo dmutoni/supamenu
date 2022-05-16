@@ -23,6 +23,8 @@ import utilities from '../tailwind.json';
 import NearbyResto from '../screens/NearbyResto';
 import Register from '../components/Register';
 import Login from '../components/Login';
+import Checkout from '../components/Checkout';
+import CheckoutScreen from '../screens/CheckoutScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -48,8 +50,9 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

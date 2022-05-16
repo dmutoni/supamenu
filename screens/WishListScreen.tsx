@@ -3,10 +3,10 @@ import { Text, View } from '../components/Themed'
 import WishItemScreen, { IItemProps } from '../components/WishItemScreen'
 import { useTailwind } from 'tailwind-rn/dist';
 import { FlatList, ListRenderItem, ScrollView, TouchableOpacity } from 'react-native';
-import { AntDesign, FontAwesome, Fontisto } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { RootTabScreenProps } from '../types';
 import Back from '../components/Back';
 
 const drinks: IItemProps[] = [
@@ -66,7 +66,7 @@ export default function WishListScreen({ navigation }: RootTabScreenProps<'TabTw
                     <Text style={tailwind('font-bold text-xl')}>Total</Text>
                     <Text style={tailwind('font-bold text-orange text-xl')}>Frw 16, 000</Text>
                 </View>
-                <Button title='Proceed to checkout' />
+                <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} />
             </View>
         </View>
     )
