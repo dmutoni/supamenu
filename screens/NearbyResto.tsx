@@ -28,12 +28,12 @@ export default function NearbyResto({ navigation }: RootTabScreenProps<'TabTwo'>
 
             <ScrollView>
                 <View style={tailwind('mx-4')}>
-                    <OneResto title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
+                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
+                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
+                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
+                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
+                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
+                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
                 </View>
             </ScrollView>
         </SafeAreaView>
