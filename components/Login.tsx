@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
 import { Alert, Image, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
-import Navigation from '../navigation';
 import Button from './Button';
 import Input from './Input';
 import Logo from './Logo';
@@ -13,7 +12,6 @@ import Validator from "validatorjs";
 // @ts-ignore
 import en from "validatorjs/src/lang/en"
 import { login } from '../services/authentication';
-import { AxiosResponse } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login() {
@@ -21,6 +19,7 @@ export default function Login() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const goRoot = () => {
         navigation.navigate('Root');
@@ -43,32 +42,40 @@ export default function Login() {
             login: email,
             password
         }
-        const response = await login(body);
-        if (response.status === 200) {
-            const { data } = response;
-            const _storeData = async (value: LoginResponse) => {
-                try {
-                    const jsonValue = JSON.stringify(value);
-                    await AsyncStorage.setItem(
-                        'user',
-                        jsonValue
-                    );
-                } catch (error) {
-                    // Alert('Error', error.message);
-                }
-            };
-            _storeData(data);
-        }
-        const getData = async () => {
-            try {
-                const jsonValue = await AsyncStorage.getItem('user');
-                return jsonValue != null ? JSON.parse(jsonValue) : null;
-                //   return ;
-            } catch (e) {
-                // error reading value
+        setIsLoading(true);
+        await login(body).then((response) => {
+            if (response.status === 200) {
+                const { data } = response;
+                const _storeData = async (value: LoginResponse) => {
+                    try {
+                        const jsonValue = JSON.stringify(value);
+                        await AsyncStorage.setItem(
+                            'user',
+                            jsonValue
+                        );
+                    } catch (error) {
+                        // console.log(error);
+                        Alert.alert('Failed to save user data');
+                    }
+                };
+                _storeData(data);
+                setIsLoading(false);
+                goRoot();
             }
-        }
-        getData();
+        }).catch((error) => {
+            Alert.alert('Error', error.response.data.apierror.message);
+            setIsLoading(false);
+        })
+        // const getData = async () => {
+        //     try {
+        //         const jsonValue = await AsyncStorage.getItem('user');
+        //         return jsonValue != null ? JSON.parse(jsonValue) : null;
+        //         //   return ;
+        //     } catch (e) {
+        //         // error reading value
+        //     }
+        // }
+        // getData();
     }
 
     return (
@@ -82,7 +89,7 @@ export default function Login() {
                 <Text style={tailwind('text-center text-sm py-5 text-gray-400')}>Sign in to continue</Text>
                 <Input placeholder='Your email' value={email} keyBoardType='email-address' onChangeText={text => setEmail(text)} name={require(`../assets/icons/mail.png`)} />
                 <Input placeholder='Your password' value={password} secureTextEntry={true} onChangeText={text => setPassword(text)} name={require(`../assets/icons/lock.png`)} />
-                <Button title='Sign in' onPress={handleLogin} />
+                <Button title='Sign in' loading={isLoading} onPress={handleLogin} />
 
                 <View style={tailwind('flex flex-row my-4 mx-16 items-center justify-center')}>
                     <Separator />
