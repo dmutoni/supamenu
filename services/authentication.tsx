@@ -8,7 +8,7 @@ const login = async (body: ILogin): Promise<AxiosResponse<LoginResponse>> => {
 }
 
 const signUp = async (body: ISignUp): Promise<AxiosResponse<void>> => {
-    return await axios.post(`${url}/auth/signup`, body);
+    return await axios.post(`${url}/auth/client/signup`, body);
 }
 
 export {

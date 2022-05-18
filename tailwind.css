@@ -505,6 +505,14 @@
   font-weight: 500
 }
 
+.uppercase {
+  text-transform: uppercase
+}
+
+.lowercase {
+  text-transform: lowercase
+}
+
 .text-blue-800 {
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity))

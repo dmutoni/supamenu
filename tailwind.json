@@ -665,6 +665,16 @@
 			"fontWeight": "500"
 		}
 	},
+	"uppercase": {
+		"style": {
+			"textTransform": "uppercase"
+		}
+	},
+	"lowercase": {
+		"style": {
+			"textTransform": "lowercase"
+		}
+	},
 	"text-blue-800": {
 		"style": {
 			"--tw-text-opacity": 1,

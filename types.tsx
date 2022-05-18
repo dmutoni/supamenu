@@ -59,7 +59,7 @@ export interface ILogin {
 
 export interface ISignUp {
   firstName: string;
-  secondName: string;
+  lastName: string;
   mobile: string;
   email: string;
   password: string;

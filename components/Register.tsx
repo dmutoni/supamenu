@@ -11,6 +11,9 @@ import Validator from "validatorjs";
 
 // @ts-ignore
 import en from "validatorjs/src/lang/en"
+import { ISignUp } from '../types';
+import { signUp } from '../services/authentication';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Register() {
     const tailwind = useTailwind();
@@ -21,6 +24,7 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [mobile, setMobile] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const goToLogin = () => {
         navigation.navigate('Login');
@@ -37,15 +41,33 @@ export default function Register() {
             firstName: "required|string|min:3",
             lastName: "required|string|min:3",
             email: "required|email|min:3",
-            password: "required|string|min:3",
-            mobile: "required|string|min:9"
+            password: "required|min:8,'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'",
+            mobile: "required|numeric|min:10",
+        }, {
+            regex: "The password must contain 8 numbers with one special characters and at least one"
         })
 
         if (valid.fails()) {
             Alert.alert("Error", Object.values(valid.errors.all())[0][0])
             return;
         }
-
+        const body: ISignUp = {
+            firstName,
+            lastName,
+            email,
+            mobile,
+            password
+        }
+        setIsLoading(true);
+        await signUp(body).then((response) => {
+            if (response.status === 201) {
+                setIsLoading(false);
+                goToLogin();
+            }
+        }).catch((error) => {
+            Alert.alert('Error', "Validation error");
+            setIsLoading(false);
+        })
     }
 
     return (
@@ -77,7 +99,6 @@ export default function Register() {
                 <View style={tailwind('flex flex-row justify-center items-center pb-16')}>
                     <Text style={tailwind('py-4 text-gray-400 text-sm text-center')}>Already have an account?</Text>
                     <Text style={tailwind('py-4 text-orange text-sm text-center px-2')} onPress={goToLogin}>Sign in</Text>
-                    <Text style={tailwind('py-4 text-orange text-sm text-center px-2')} onPress={goToResto}>One Resto</Text>
                 </View>
             </ScrollView>
         </View>
