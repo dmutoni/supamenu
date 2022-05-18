@@ -8,11 +8,13 @@ import Input from './Input';
 import Logo from './Logo';
 import Separator from './Separator';
 import { Text, View } from './Themed'
-
+import { ILogin, LoginResponse } from '../types';
 import Validator from "validatorjs";
-
 // @ts-ignore
 import en from "validatorjs/src/lang/en"
+import { login } from '../services/authentication';
+import { AxiosResponse } from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login() {
     const tailwind = useTailwind();
@@ -37,7 +39,36 @@ export default function Login() {
             Alert.alert("Error", Object.values(valid.errors.all())[0][0])
             return;
         }
-        goRoot();
+        const body: ILogin = {
+            login: email,
+            password
+        }
+        const response = await login(body);
+        if (response.status === 200) {
+            const { data } = response;
+            const _storeData = async (value: LoginResponse) => {
+                try {
+                    const jsonValue = JSON.stringify(value);
+                    await AsyncStorage.setItem(
+                        'user',
+                        jsonValue
+                    );
+                } catch (error) {
+                    // Alert('Error', error.message);
+                }
+            };
+            _storeData(data);
+        }
+        const getData = async () => {
+            try {
+                const jsonValue = await AsyncStorage.getItem('user');
+                return jsonValue != null ? JSON.parse(jsonValue) : null;
+                //   return ;
+            } catch (e) {
+                // error reading value
+            }
+        }
+        getData();
     }
 
     return (

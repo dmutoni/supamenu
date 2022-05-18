@@ -71,11 +71,16 @@ export interface Response<T = unknown> {
   message: string;
 }
 
+export interface ResponseLogin {
+  success: boolean;
+  message: string;
+}
+
 export enum Status {
   ACTIVE,
   INACTIVE,
 }
-export interface LoginResponse<T = unknown> extends Response<T> {
+export interface LoginResponse extends ResponseLogin {
   token: {
     accessToken: string;
     refreshToken: string;

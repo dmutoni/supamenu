@@ -29,6 +29,11 @@
   margin-bottom: 1.5rem
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
+}
+
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem
@@ -37,6 +42,11 @@
 .mx-8 {
   margin-left: 2rem;
   margin-right: 2rem
+}
+
+.mx-16 {
+  margin-left: 4rem;
+  margin-right: 4rem
 }
 
 .my-28 {
@@ -49,29 +59,9 @@
   margin-bottom: 1rem
 }
 
-.mx-16 {
-  margin-left: 4rem;
-  margin-right: 4rem
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem
-}
-
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem
-}
-
-.mx-10 {
-  margin-left: 2.5rem;
-  margin-right: 2.5rem
-}
-
-.mx-12 {
-  margin-left: 3rem;
-  margin-right: 3rem
 }
 
 .mt-4 {
@@ -130,16 +120,12 @@
   margin-top: 5rem
 }
 
-.mt-1 {
-  margin-top: 0.25rem
-}
-
-.mt-32 {
-  margin-top: 8rem
-}
-
 .mb-6 {
   margin-bottom: 1.5rem
+}
+
+.mt-1 {
+  margin-top: 0.25rem
 }
 
 .flex {
@@ -160,6 +146,10 @@
 
 .h-32 {
   height: 8rem
+}
+
+.h-10 {
+  height: 2.5rem
 }
 
 .h-\[28\%\] {
@@ -190,18 +180,6 @@
   height: 2rem
 }
 
-.h-screen {
-  height: 100vh
-}
-
-.h-28 {
-  height: 7rem
-}
-
-.h-10 {
-  height: 2.5rem
-}
-
 .w-full {
   width: 100%
 }
@@ -210,8 +188,8 @@
   width: 8rem
 }
 
-.w-12 {
-  width: 3rem
+.w-10 {
+  width: 2.5rem
 }
 
 .w-\[95\%\] {
@@ -234,6 +212,10 @@
   width: 5rem
 }
 
+.w-12 {
+  width: 3rem
+}
+
 .w-36 {
   width: 9rem
 }
@@ -248,10 +230,6 @@
 
 .w-60 {
   width: 15rem
-}
-
-.w-10 {
-  width: 2.5rem
 }
 
 .flex-row {
@@ -416,9 +394,19 @@
   padding-bottom: 1.25rem
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem
 }
 
 .px-16 {
@@ -431,21 +419,6 @@
   padding-right: 0.5rem
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem
-}
-
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem
-}
-
 .pt-12 {
   padding-top: 3rem
 }
@@ -456,6 +429,10 @@
 
 .pt-8 {
   padding-top: 2rem
+}
+
+.pt-20 {
+  padding-top: 5rem
 }
 
 .pt-4 {
@@ -472,10 +449,6 @@
 
 .pb-6 {
   padding-bottom: 1.5rem
-}
-
-.pt-20 {
-  padding-top: 5rem
 }
 
 .text-center {
@@ -518,11 +491,6 @@
 
 .text-\[2\.5rem\] {
   font-size: 2.5rem
-}
-
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem
 }
 
 .font-semibold {
