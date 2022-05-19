@@ -14,6 +14,7 @@ import en from "validatorjs/src/lang/en"
 import { ISignUp } from '../types';
 import { signUp } from '../services/authentication';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Portal, Modal, Provider } from 'react-native-paper';
 
 export default function Register() {
     const tailwind = useTailwind();
@@ -25,7 +26,8 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [mobile, setMobile] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-
+    const [modalVisible, setModalVisible] = useState(false);
+    const containerStyle = { backgroundColor: 'white', padding: 20 };
     const goToLogin = () => {
         navigation.navigate('Login');
     }
@@ -38,7 +40,7 @@ export default function Register() {
             firstName: "required|string|min:3",
             lastName: "required|string|min:3",
             email: "required|email|min:3",
-            password: "required|min:8,'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'",
+            password: "required|min:8",
             mobile: "required|numeric|min:10",
         }, {
             regex: "The password must contain 8 numbers with one special characters and at least one"
@@ -59,10 +61,14 @@ export default function Register() {
         await signUp(body).then((response) => {
             if (response.status === 201) {
                 setIsLoading(false);
-                goToLogin();
+                setModalVisible(true);
+                Alert.alert("Success", 'Successfully registered please login to continue');
+
+                // goToLogin();
             }
         }).catch((error) => {
-            Alert.alert('Error', "Validation error");
+            console.log(error.response.data);
+            Alert.alert('Error', error?.response?.data?.apierror?.message || 'Something went wrong');
             setIsLoading(false);
         })
     }
