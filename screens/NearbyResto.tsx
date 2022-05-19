@@ -1,14 +1,32 @@
 import { StackActions } from '@react-navigation/native';
-import React from 'react';
-import { SafeAreaView, StyleSheet, Image, TextInput, ScrollView, ToastAndroid } from 'react-native';
+import React, { useEffect } from 'react';
+import { SafeAreaView, StyleSheet, TextInput, ActivityIndicator, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
 import Back from '../components/Back';
 import { OneResto } from '../components/OneResto';
-import Separator from '../components/Separator';
 import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
+import { searchResto } from '../services/restaurants';
+import { RestaurantInfo, RestoDetails, RootTabScreenProps, TRestoParam } from '../types';
 
-export default function NearbyResto({ navigation }: RootTabScreenProps<'Timer'>) {
+
+
+export default function NearbyResto({ navigation, route }: RootTabScreenProps<'Timer'>) {
+
+    const search: TRestoParam = route.params as unknown as TRestoParam;
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [data, setData] = React.useState<RestoDetails[]>([]);
+
+    useEffect(() => {
+        if (search.searchQuery) {
+            searchResto(search.searchQuery).then((info) => {
+                setData(info.data.content);
+                setIsLoading(false);
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+    }, [])
+
     const tailwind = useTailwind();
     const popAction = StackActions.pop(1);
     return (
@@ -28,31 +46,12 @@ export default function NearbyResto({ navigation }: RootTabScreenProps<'Timer'>)
 
             <ScrollView>
                 <View style={tailwind('mx-4')}>
-                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
-                    <OneResto img={require('../assets/images/burg.jpg')} title={'Choose Kigali'} tags={'World, African, Pizzeria, Coffee'} />
+                    {isLoading ? <ActivityIndicator size="small" color="white" /> :
+                        data?.map((restaurant) => (
+                            <OneResto id={restaurant.id} img={require('../assets/images/burg.jpg')} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
+                        ))}
                 </View>
             </ScrollView>
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
-    },
-});

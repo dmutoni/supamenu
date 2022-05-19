@@ -20,12 +20,13 @@ export type RootStackParamList = {
   NotFound: undefined;
   Login: undefined;
   Register: undefined;
-  NearbyResto: undefined;
+  NearbyResto: TRestoParam;
   Checkout: undefined;
   CheckForDetails: undefined;
   FeedBack: undefined;
   ChooseMenu: undefined;
 };
+
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
@@ -50,6 +51,11 @@ export type TOneResto = {
   img: ImageSourcePropType
   title: string
   tags: string
+  id: number;
+}
+
+export type TRestoParam = {
+  searchQuery: string
 }
 
 export interface ILogin {
@@ -97,4 +103,21 @@ export interface LoginResponse extends ResponseLogin {
   authorities: {
     authority: string;
   }
-} 
+}
+
+export type RestoDetails = {
+  id: number,
+  name: string,
+  abbrev: string,
+  representative: string,
+  address: string,
+  email: string,
+  phone: string,
+  bankAccount: string,
+  bankName: string,
+  bankIBAN: string,
+}
+
+export interface RestaurantInfo {
+  content: RestoDetails[]
+}

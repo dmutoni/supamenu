@@ -29,9 +29,6 @@ export default function Register() {
     const goToLogin = () => {
         navigation.navigate('Login');
     }
-    const goToResto = () => {
-        navigation.navigate('NearbyResto')
-    }
 
     const handleRegister = async () => {
 

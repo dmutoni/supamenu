@@ -53,8 +53,8 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
+      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="ChooseMenu" component={ChooseMenuScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
       <Stack.Screen name="CheckForDetails" component={CheckForDetailsScreen} options={{ headerShown: false }} />
@@ -100,16 +100,7 @@ function BottomTabNavigator() {
           title: '',
           tabBarIcon: ({ color }) => <AntDesign name="home" color={color}
             style={{ marginRight: 15 }} size={24} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <AntDesign name="home" color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }} size={24} />
-            </Pressable>
-          ),
+
         })}
       />
       <BottomTab.Screen

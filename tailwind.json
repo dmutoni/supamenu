@@ -665,16 +665,6 @@
 			"fontWeight": "500"
 		}
 	},
-	"uppercase": {
-		"style": {
-			"textTransform": "uppercase"
-		}
-	},
-	"lowercase": {
-		"style": {
-			"textTransform": "lowercase"
-		}
-	},
 	"text-blue-800": {
 		"style": {
 			"--tw-text-opacity": 1,
@@ -727,21 +717,6 @@
 		"style": {
 			"--tw-text-opacity": 1,
 			"color": "rgb(107 114 128 / var(--tw-text-opacity))"
-		}
-	},
-	"opacity-60": {
-		"style": {
-			"opacity": 0.6
-		}
-	},
-	"opacity-10": {
-		"style": {
-			"opacity": 0.1
-		}
-	},
-	"opacity-0": {
-		"style": {
-			"opacity": 0
 		}
 	}
 }
