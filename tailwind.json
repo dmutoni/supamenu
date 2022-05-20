@@ -650,6 +650,11 @@
 			"fontSize": 40
 		}
 	},
+	"text-[2.5rem]": {
+		"style": {
+			"fontSize": 40
+		}
+	},
 	"font-semibold": {
 		"style": {
 			"fontWeight": "600"
@@ -677,10 +682,10 @@
 			"color": "rgb(209 213 219 / var(--tw-text-opacity))"
 		}
 	},
-	"text-orange": {
+	"text-gray-400": {
 		"style": {
 			"--tw-text-opacity": 1,
-			"color": "rgb(247 148 29 / var(--tw-text-opacity))"
+			"color": "rgb(156 163 175 / var(--tw-text-opacity))"
 		}
 	},
 	"text-white": {
@@ -701,10 +706,10 @@
 			"color": "rgb(37 212 130 / var(--tw-text-opacity))"
 		}
 	},
-	"text-gray-400": {
+	"text-black": {
 		"style": {
 			"--tw-text-opacity": 1,
-			"color": "rgb(156 163 175 / var(--tw-text-opacity))"
+			"color": "rgb(0 0 0 / var(--tw-text-opacity))"
 		}
 	},
 	"text-black": {
