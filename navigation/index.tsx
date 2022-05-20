@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -15,13 +15,19 @@ import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import WishListScreen from '../screens/WishListScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import { TailwindProvider } from 'tailwind-rn';
 import utilities from '../tailwind.json';
+import NearbyResto from '../screens/NearbyResto';
 import Register from '../components/Register';
 import Login from '../components/Login';
+import CheckoutScreen from '../screens/CheckoutScreen';
+import CheckForDetailsScreen from '../screens/CheckForDetailsScreen';
+import FeedBackScreen from '../screens/FeedBackScreen';
+import ChooseMenuScreen from '../screens/ChooseMenuScreen';
+import ScannerScreen from '../screens/ScannerScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -48,6 +54,11 @@ function RootNavigator() {
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
+      <Stack.Screen name="ChooseMenu" component={ChooseMenuScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="CheckForDetails" component={CheckForDetailsScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="FeedBack" component={FeedBackScreen} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -69,40 +80,79 @@ function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="TabOne"
       screenOptions={{
+        tabBarInactiveTintColor: 'black',
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 0,
+          height: 60,
+          borderTopRightRadius: 40,
+          borderTopLeftRadius: 40,
+          marginHorizontal: 1,
+          paddingHorizontal: 20,
+        },
       }}>
       <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           headerShown: false,
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          tabBarIcon: ({ color }) => <AntDesign name="home" color={color}
+            style={{ marginRight: 15 }} size={24} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
+              <AntDesign name="home" color={Colors[colorScheme].text}
+                style={{ marginRight: 15 }} size={24} />
             </Pressable>
           ),
         })}
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={NearbyResto}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Ionicons name="notifications-outline" size={24} color={color} />,
         }}
       />
+      <BottomTab.Screen
+        name="Scan"
+        component={ScannerScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="credit-card-scan-outline" size={24} color={color} />,
+        }}
+      />
+
+      <BottomTab.Screen
+        name="Timer"
+        component={NearbyResto}
+        options={{
+          headerShown: false,
+          title: '',
+          tabBarIcon: ({ color }) => <Ionicons name="md-time-outline" size={24} color={color} />,
+        }}
+      />
+
+      <BottomTab.Screen
+        name="Cart"
+        component={WishListScreen}
+        options={{
+          headerShown: false,
+          title: '',
+          tabBarIcon: ({ color }) => <Ionicons name="md-cart-outline" size={24} color={color} />,
+        }}
+      />
+
     </BottomTab.Navigator>
+
   );
 }
 
