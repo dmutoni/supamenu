@@ -12,12 +12,12 @@ import { RestaurantInfo, RestoDetails, RootTabScreenProps, TRestoParam } from '.
 
 export default function NearbyResto({ navigation, route }: RootTabScreenProps<'Timer'>) {
 
-    const search: TRestoParam = route.params as unknown as TRestoParam;
+    const search: TRestoParam = route?.params as unknown as TRestoParam;
     const [isLoading, setIsLoading] = React.useState(true);
     const [data, setData] = React.useState<RestoDetails[]>([]);
 
     useEffect(() => {
-        if (search.searchQuery) {
+        if (search?.searchQuery) {
             searchResto(search.searchQuery).then((info) => {
                 setData(info.data.content);
                 setIsLoading(false);
@@ -46,10 +46,15 @@ export default function NearbyResto({ navigation, route }: RootTabScreenProps<'T
 
             <ScrollView>
                 <View style={tailwind('mx-4')}>
-                    {isLoading ? <ActivityIndicator size="small" color="white" /> :
-                        data?.map((restaurant) => (
-                            <OneResto id={restaurant.id} img={require('../assets/images/burg.jpg')} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
-                        ))}
+                    {
+                        isLoading ? <ActivityIndicator size="small" color="white" /> :
+                            data?.map((restaurant) => (
+                                <OneResto id={restaurant.id} img={require('../assets/images/burg.jpg')} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
+                            ))
+                    }
+                    {
+                        !isLoading && data?.length === 0 && <Text style={tailwind('text-center text-gray-500')}>No restaurants found</Text>
+                    }
                 </View>
             </ScrollView>
         </SafeAreaView>
