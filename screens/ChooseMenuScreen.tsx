@@ -1,8 +1,8 @@
 import React from 'react'
 import ChooseMenu from '../components/ChooseMenu'
-
-export default function ChooseMenuScreen() {
+import { RootStackParamList, RootStackScreenProps } from '../types'
+export default function ChooseMenuScreen({ navigation, route }: RootStackScreenProps<'ChooseMenu'>) {
     return (
-        <ChooseMenu />
+        <ChooseMenu navigation={navigation} route={route} />
     )
 }

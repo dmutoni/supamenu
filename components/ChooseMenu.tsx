@@ -3,10 +3,10 @@ import { ActivityIndicator, Image, SafeAreaView, ScrollView, StatusBar } from 'r
 import { useTailwind } from 'tailwind-rn/dist';
 import { Text, View } from './Themed';
 import MenuItem from './MenuItem';
-import { IMenuCategory, IMenuCategoryResponse } from '../types';
+import { IMenuCategory, IMenuCategoryResponse, RootStackScreenProps } from '../types';
 import { getMenuCategories } from '../services/menu';
 
-export default function ChooseMenu() {
+export default function ChooseMenu({ navigation }: RootStackScreenProps<'ChooseMenu'>) {
     const tailwind = useTailwind();
     const [isLoading, setIsLoading] = React.useState(true);
     const [data, setData] = React.useState<IMenuCategory[]>([]);
@@ -34,11 +34,11 @@ export default function ChooseMenu() {
                     {
                         isLoading ? <ActivityIndicator size="small" color="white" /> :
                             data?.map((menu) => (
-                                <MenuItem key={menu.id} title={menu.name} />
+                                <MenuItem key={menu.id} title={menu.name} onPress={() => navigation.navigate('ChooseMenu')} />
                             ))
                     }
                     {
-                        !isLoading && data?.length === 0 && <Text style={tailwind('text-center text-gray-500')}>No restaurants found</Text>
+                        !isLoading && data?.length === 0 && <Text style={tailwind('text-center text-gray-500')}>No Menu items found</Text>
                     }
                 </View>
 
