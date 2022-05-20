@@ -66,16 +66,7 @@ export default function Login() {
             Alert.alert('Error', error.response.data.apierror.message);
             setIsLoading(false);
         })
-        // const getData = async () => {
-        //     try {
-        //         const jsonValue = await AsyncStorage.getItem('user');
-        //         return jsonValue != null ? JSON.parse(jsonValue) : null;
-        //         //   return ;
-        //     } catch (e) {
-        //         // error reading value
-        //     }
-        // }
-        // getData();
+
     }
 
     return (

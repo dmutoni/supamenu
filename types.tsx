@@ -118,6 +118,25 @@ export type RestoDetails = {
   bankIBAN: string,
 }
 
-export interface RestaurantInfo {
+export interface ResponseData {
   content: RestoDetails[]
+}
+
+export interface IMenuCategoryResponse {
+  content: IMenuCategory[];
+}
+
+export interface IMenuCategory {
+  id: number,
+  name: string,
+  fourthPicturePath?: string,
+  thirdPicturePath?: string,
+  secondPicturePath?: string,
+  displayPriority: number,
+  defaultPicturePath?: string,
+  status: Status,
+  defaultPicture?: string,
+  secondPicture?: string,
+  thirdPicture: string,
+  fourthPicture: string
 }

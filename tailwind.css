@@ -493,10 +493,6 @@
   font-size: 2.5rem
 }
 
-.text-\[2\.5rem\] {
-  font-size: 2.5rem
-}
-
 .font-semibold {
   font-weight: 600
 }
@@ -517,11 +513,6 @@
 .text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity))
-}
-
-.text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
 .text-orange {

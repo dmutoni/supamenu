@@ -6,7 +6,7 @@ import Back from '../components/Back';
 import { OneResto } from '../components/OneResto';
 import { Text, View } from '../components/Themed';
 import { searchResto } from '../services/restaurants';
-import { RestaurantInfo, RestoDetails, RootTabScreenProps, TRestoParam } from '../types';
+import { ResponseData, RestoDetails, RootTabScreenProps, TRestoParam } from '../types';
 
 
 
