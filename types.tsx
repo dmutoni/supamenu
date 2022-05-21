@@ -24,7 +24,9 @@ export type RootStackParamList = {
   Checkout: undefined;
   CheckForDetails: undefined;
   FeedBack: undefined;
-  ChooseMenu: undefined;
+  ChooseMenu: {
+    id: number
+  };
 };
 
 
@@ -51,13 +53,16 @@ export type TOneResto = {
   img: ImageSourcePropType
   title: string
   tags: string
-  id: number;
+  id?: number;
+  onPress?: () => void
 }
 
 export type TRestoParam = {
   searchQuery: string
 }
-
+export type TChooseParam = {
+  id: number
+}
 export interface ILogin {
   login: string;
   password: string;

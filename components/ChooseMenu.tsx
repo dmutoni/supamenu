@@ -3,21 +3,24 @@ import { ActivityIndicator, Image, SafeAreaView, ScrollView, StatusBar } from 'r
 import { useTailwind } from 'tailwind-rn/dist';
 import { Text, View } from './Themed';
 import MenuItem from './MenuItem';
-import { IMenuCategory, IMenuCategoryResponse, RootStackScreenProps } from '../types';
+import { IMenuCategory, IMenuCategoryResponse, RootStackScreenProps, TChooseParam } from '../types';
 import { getMenuCategories } from '../services/menu';
 
-export default function ChooseMenu({ navigation }: RootStackScreenProps<'ChooseMenu'>) {
+export default function ChooseMenu({ navigation, route }: RootStackScreenProps<'ChooseMenu'>) {
     const tailwind = useTailwind();
     const [isLoading, setIsLoading] = React.useState(true);
     const [data, setData] = React.useState<IMenuCategory[]>([]);
+    const id: TChooseParam = route?.params as unknown as TChooseParam;
 
     useEffect(() => {
-        getMenuCategories().then((info) => {
-            setData(info.data.content);
-            setIsLoading(false);
-        }).catch(error => {
-            console.log(error);
-        })
+        if (id) {
+            getMenuCategories(id?.id).then((info) => {
+                setData(info.data.content);
+                setIsLoading(false);
+            }).catch(error => {
+                console.log(error);
+            })
+        }
 
     }, [])
     return (
@@ -34,7 +37,7 @@ export default function ChooseMenu({ navigation }: RootStackScreenProps<'ChooseM
                     {
                         isLoading ? <ActivityIndicator size="small" color="white" /> :
                             data?.map((menu) => (
-                                <MenuItem key={menu.id} title={menu.name} onPress={() => navigation.navigate('ChooseMenu')} />
+                                <MenuItem key={menu.id} title={menu.name} />
                             ))
                     }
                     {

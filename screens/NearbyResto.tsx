@@ -47,10 +47,12 @@ export default function NearbyResto({ navigation, route }: RootTabScreenProps<'T
             <ScrollView>
                 <View style={tailwind('mx-4')}>
                     {
-                        isLoading ? <ActivityIndicator size="small" color="white" /> :
-                            data?.map((restaurant) => (
-                                <OneResto id={restaurant.id} img={require('../assets/images/burg.jpg')} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
-                            ))
+                        isLoading ? (<ActivityIndicator size="small" color="white" />) :
+                            (data?.map((restaurant) => {
+                                return (
+                                    <OneResto img={require('../assets/images/burg.jpg')} onPress={() => navigation.navigate('ChooseMenu', { id: 1 })} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
+                                )
+                            }))
                     }
                     {
                         !isLoading && data?.length === 0 && <Text style={tailwind('text-center text-gray-500')}>No restaurants found</Text>

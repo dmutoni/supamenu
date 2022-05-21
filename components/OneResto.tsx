@@ -9,7 +9,7 @@ export function OneResto(props: TOneResto) {
     const navigation = useNavigation();
 
     return (
-        <TouchableOpacity style={tailwind('flex bg-gray-100 flex-row rounded-xl mx-5 p-2 my-2')} onPress={() => navigation.navigate('ChooseMenu')}>
+        <TouchableOpacity style={tailwind('flex bg-gray-100 flex-row rounded-xl mx-5 p-2 my-2')} onPress={props.onPress}>
             <View>
                 <Image style={tailwind('h-20 w-20 rounded-xl')} source={props.img} />
             </View>
