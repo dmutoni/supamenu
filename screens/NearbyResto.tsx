@@ -1,18 +1,19 @@
-import { StackActions } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, TextInput, ActivityIndicator, ScrollView } from 'react-native';
+import { SafeAreaView, TextInput, ActivityIndicator, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
 import Back from '../components/Back';
 import { OneResto } from '../components/OneResto';
 import { Text, View } from '../components/Themed';
 import { searchResto } from '../services/restaurants';
-import { ResponseData, RestoDetails, RootTabScreenProps, TRestoParam } from '../types';
+import { RestoDetails, RootTabScreenProps, TRestoParam } from '../types';
 
 
 
-export default function NearbyResto({ navigation, route }: RootTabScreenProps<'Timer'>) {
+export default function NearbyResto({ route }: RootTabScreenProps<'Timer'>) {
 
     const search: TRestoParam = route?.params as unknown as TRestoParam;
+    const navigation = useNavigation();
     const [isLoading, setIsLoading] = React.useState(true);
     const [data, setData] = React.useState<RestoDetails[]>([]);
 
