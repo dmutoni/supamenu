@@ -24,6 +24,7 @@ export type RootStackParamList = {
   Checkout: undefined;
   CheckForDetails: undefined;
   FeedBack: undefined;
+  WishList: undefined;
   ChooseMenu: {
     id: number
   };
@@ -127,9 +128,6 @@ export interface ResponseData {
   content: RestoDetails[]
 }
 
-export interface IMenuCategoryResponse {
-  content: IMenuCategory[];
-}
 
 export interface IMenuCategory {
   id: number,
@@ -144,4 +142,26 @@ export interface IMenuCategory {
   secondPicture?: string,
   thirdPicture: string,
   fourthPicture: string
+}
+
+export interface IItems {
+  id : number,
+  name: string,
+  description: string,
+  fourthPicturePath?: string,
+  thirdPicturePath?: string,
+  secondPicturePath?: string,
+  displayPriority: number,
+  defaultPicturePath?: string,
+  status: Status,
+  defaultPicture?: string,
+  secondPicture?: string,
+  thirdPicture: string,
+  fourthPicture: string,
+  unitPrice: number
+}
+
+export interface IMenuCategoryResponse {
+  category: IMenuCategory,
+  items: IItems[]
 }

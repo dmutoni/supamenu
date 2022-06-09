@@ -38,7 +38,7 @@ export default function ChooseMenu({ navigation, route }: RootStackScreenProps<'
                       
                         isLoading ? <ActivityIndicator size="small" color="white" /> :
                             data?.map((menu) => (
-                                <MenuItem key={menu.category.id} title={menu.category.name} onPress={} />
+                                <MenuItem key={menu.category.id} title={menu.category.name} />
                             ))
                     }
                     {

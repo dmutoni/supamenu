@@ -36,7 +36,7 @@ const drinks: IItemProps[] = [
 
 export default function WishListScreen({ navigation }: RootTabScreenProps<'Cart'>) {
     const tailwind = useTailwind();
-    
+
     const renderItem = ({ item }: { item: IItemProps }) => (
         <View style={tailwind('py-2')}>
             <WishItemScreen {...item} />
@@ -67,7 +67,7 @@ export default function WishListScreen({ navigation }: RootTabScreenProps<'Cart'
                     <Text style={tailwind('font-bold text-xl')}>Total</Text>
                     <Text style={tailwind('font-bold text-orange text-xl')}>Frw 16, 000</Text>
                 </View>
-                <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} />
+                {/* <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} /> */}
             </View>
         </View>
     )
