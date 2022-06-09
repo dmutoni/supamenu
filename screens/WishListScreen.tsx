@@ -36,6 +36,7 @@ const drinks: IItemProps[] = [
 
 export default function WishListScreen({ navigation }: RootTabScreenProps<'Cart'>) {
     const tailwind = useTailwind();
+    
     const renderItem = ({ item }: { item: IItemProps }) => (
         <View style={tailwind('py-2')}>
             <WishItemScreen {...item} />
