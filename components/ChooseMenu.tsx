@@ -9,13 +9,13 @@ import { getMenuCategories } from '../services/menu';
 export default function ChooseMenu({ navigation, route }: RootStackScreenProps<'ChooseMenu'>) {
     const tailwind = useTailwind();
     const [isLoading, setIsLoading] = React.useState(true);
-    const [data, setData] = React.useState<IMenuCategory[]>([]);
+    const [data, setData] = React.useState<IMenuCategoryResponse[]>([]);
     const id: TChooseParam = route?.params as unknown as TChooseParam;
 
     useEffect(() => {
         if (id) {
             getMenuCategories(id?.id).then((info) => {
-                setData(info.data.content);
+                setData(info.data);
                 setIsLoading(false);
             }).catch(error => {
                 console.log(error);
@@ -35,9 +35,10 @@ export default function ChooseMenu({ navigation, route }: RootStackScreenProps<'
                 <Text style={tailwind('text-center text-orange text-2xl')}>Menu</Text>
                 <View style={tailwind('mx-16 py-12 bg-black')}>
                     {
+                      
                         isLoading ? <ActivityIndicator size="small" color="white" /> :
                             data?.map((menu) => (
-                                <MenuItem key={menu.id} title={menu.name} />
+                                <MenuItem key={menu.category.id} title={menu.category.name} onPress={} />
                             ))
                     }
                     {
