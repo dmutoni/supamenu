@@ -7,6 +7,7 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ImageSourcePropType } from 'react-native';
+import { IItemProps } from './components/WishItemScreen';
 
 declare global {
   namespace ReactNavigation {
@@ -24,7 +25,9 @@ export type RootStackParamList = {
   Checkout: undefined;
   CheckForDetails: undefined;
   FeedBack: undefined;
-  WishList: undefined;
+  WishList: {
+    item: IItems[];
+  };
   ChooseMenu: {
     id: number
   };

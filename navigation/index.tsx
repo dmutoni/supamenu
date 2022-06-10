@@ -28,6 +28,7 @@ import CheckForDetailsScreen from '../screens/CheckForDetailsScreen';
 import FeedBackScreen from '../screens/FeedBackScreen';
 import ChooseMenuScreen from '../screens/ChooseMenuScreen';
 import ScannerScreen from '../screens/ScannerScreen';
+import WishItemScreen from '../components/WishItemScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -58,6 +59,7 @@ function RootNavigator() {
       <Stack.Screen name="ChooseMenu" component={ChooseMenuScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
       <Stack.Screen name="CheckForDetails" component={CheckForDetailsScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="WishList" component={WishListScreen} options={{ headerShown: false }} />
       <Stack.Screen name="FeedBack" component={FeedBackScreen} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>

@@ -36,14 +36,14 @@ export default function NearbyResto({ route }: RootTabScreenProps<'Timer'>) {
     const renderRestaurants = ({ restaurant }: { restaurant: RestoDetails }) => {
          if (searchPhrase === "") {
             return (
-                <OneResto img={require('../assets/images/burg.jpg')} onPress={() => navigation.navigate('ChooseMenu', { id: 1 })} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
+                <OneResto img={require('../assets/images/burg.jpg')} onPress={() => navigation.navigate('ChooseMenu', { id: restaurant.id })} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
             )
          } 
          if (restaurant.name.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-            return <OneResto img={require('../assets/images/burg.jpg')} onPress={() => navigation.navigate('ChooseMenu', { id: 1 })} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
+            return <OneResto img={require('../assets/images/burg.jpg')} onPress={() => navigation.navigate('ChooseMenu', { id: restaurant.id })} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
           }
           if (restaurant.address.toUpperCase().includes(searchPhrase.toUpperCase().trim().replace(/\s/g, ""))) {
-            return <OneResto img={require('../assets/images/burg.jpg')} onPress={() => navigation.navigate('ChooseMenu', { id: 1 })} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
+            return <OneResto img={require('../assets/images/burg.jpg')} onPress={() => navigation.navigate('ChooseMenu', { id: restaurant.id })} title={restaurant.name} tags={restaurant.address} key={restaurant.id} />
           }
         return <Text></Text>
     }
@@ -68,7 +68,7 @@ export default function NearbyResto({ route }: RootTabScreenProps<'Timer'>) {
                         data={data}
                         renderItem={({ item }) => renderRestaurants({ restaurant: item })}
                         keyExtractor={(item) => item.name}
-                    /> : <Text> No Restaurants available </Text>
+                    /> : <ActivityIndicator size="small" color="orange" />
                 }
                 </View>
             </View>
