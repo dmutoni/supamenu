@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View } from '../components/Themed'
 import WishItemScreen, { IItemProps } from '../components/WishItemScreen'
 import { useTailwind } from 'tailwind-rn/dist';
@@ -6,40 +6,20 @@ import { FlatList, ListRenderItem, ScrollView, TouchableOpacity } from 'react-na
 import { Fontisto } from '@expo/vector-icons';
 import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
-import { RootTabScreenProps } from '../types';
+import { IItems, RootTabScreenProps, TWishListParam } from '../types';
 import Back from '../components/Back';
 
-const drinks: IItemProps[] = [
-    {
-        name: 'Coca Cola',
-        ingredients: ['kafilla, lemon grass, ginger, citrus'],
-        price: 5000,
-        currency: 'RWF',
-        amount: 2,
-    },
-    {
-        name: 'Singapole sling',
-        ingredients: ['kafilla, lemon grass, ginger, citrus'],
-        price: 5000,
-        currency: 'RWF',
-        amount: 3,
-    },
-    {
-        name: 'White russian',
-        ingredients: ['kafilla, lemon grass, ginger, citrus'],
-        price: 5000,
-        currency: 'RWF',
-        amount: 4,
-    },
-]
-    ;
+export default function WishListScreen({ navigation, route }: RootTabScreenProps<'Cart'>) {
+    const itemsData: TWishListParam = route?.params as unknown as TWishListParam;
+    const initialPrice = itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0);
+    const [totalPrice, setTotalPrice] = useState(initialPrice);
+    const [newItems, setNewItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 1 })));
 
-export default function WishListScreen({ navigation }: RootTabScreenProps<'Cart'>) {
     const tailwind = useTailwind();
 
-    const renderItem = ({ item }: { item: IItemProps }) => (
+    const renderItem = ({ item }: { item: IItems }) => (
         <View style={tailwind('py-2')}>
-            <WishItemScreen {...item} />
+            <WishItemScreen name={item.name} ingredients={[item.description]} price={item.unitPrice} amount={item.quantity} currency={'RWF'}  />
         </View>
     )
     const popAction = StackActions.pop(1);
@@ -54,9 +34,9 @@ export default function WishListScreen({ navigation }: RootTabScreenProps<'Cart'
                 </View>
                 <View>
                     <FlatList
-                        data={drinks}
+                        data={newItems}
                         renderItem={renderItem}
-                        keyExtractor={item => item.name}
+                        keyExtractor={item => item.id.toString()}
                     />
                 </View>
                 <View style={tailwind('flex flex-row items-center justify-center mt-4')}>
@@ -65,7 +45,7 @@ export default function WishListScreen({ navigation }: RootTabScreenProps<'Cart'
                 </View>
                 <View style={tailwind('flex flex-row justify-between my-6')}>
                     <Text style={tailwind('font-bold text-xl')}>Total</Text>
-                    <Text style={tailwind('font-bold text-orange text-xl')}>Frw 16, 000</Text>
+                    <Text style={tailwind('font-bold text-orange text-xl')}>Frw {totalPrice}</Text>
                 </View>
                 {/* <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} /> */}
             </View>

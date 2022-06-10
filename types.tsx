@@ -25,9 +25,7 @@ export type RootStackParamList = {
   Checkout: undefined;
   CheckForDetails: undefined;
   FeedBack: undefined;
-  WishList: {
-    item: IItems[];
-  };
+  WishList: TWishListParam;
   ChooseMenu: {
     id: number
   };
@@ -64,6 +62,11 @@ export type TOneResto = {
 export type TRestoParam = {
   searchQuery: string
 }
+
+export type TWishListParam = {
+  item: IItems[];
+}
+
 export type TChooseParam = {
   id: number
 }
@@ -161,7 +164,8 @@ export interface IItems {
   secondPicture?: string,
   thirdPicture: string,
   fourthPicture: string,
-  unitPrice: number
+  unitPrice: number,
+  [key: string]: any
 }
 
 export interface IMenuCategoryResponse {

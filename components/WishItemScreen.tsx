@@ -13,9 +13,18 @@ export interface IItemProps {
 }
 
 export default function WishItemScreen({ name, ingredients, price, amount, currency = 'FRW', onChangePrice }: IItemProps) {
+    
+    const [quantity, setQuantity] = React.useState(amount);
+    const decreaseQuantity = () => {
+        if (quantity > 0) {
+            setQuantity(quantity - 1);
+        }
+    }
+    const increaseQuantity = () => {
+        setQuantity(quantity + 1);
+    }
     const tailwind = useTailwind();
     return (
-        // <View style={tailwind('pt-20 h-full bg-red-200')}>
         <View style={tailwind('flex flex-row bg-gray-100 h-24 rounded-xl p-2')}>
             <View style={tailwind('w-24')}>
                 <Image style={tailwind('p-3 m-2 w-16 h-16 rounded-md')} source={require(`../assets/images/bb.jpg`)} />
@@ -28,12 +37,12 @@ export default function WishItemScreen({ name, ingredients, price, amount, curre
                     <View style={tailwind('flex flex-row')}>
                         <Text style={tailwind('text-orange font-bold text-lg mr-1')}>{currency}</Text>
 
-                        <Text style={tailwind('text-orange font-bold text-lg')}>{price}</Text>
+                        <Text style={tailwind('text-orange font-bold text-lg')}>{price * quantity}</Text>
                     </View>
                     <View style={tailwind('flex flex-row bg-white px-2 h-8 rounded-md justify-center items-center')}>
-                        <AntDesign name="minus" size={15} color='orange' />
-                        <Text style={tailwind('px-2 text-black')} >{amount}</Text>
-                        <AntDesign name="plus" size={15} color='orange' />
+                        <AntDesign name="minus" size={15} color='orange' onPress={decreaseQuantity}/>
+                        <Text style={tailwind('px-2 text-black')} >{quantity}</Text>
+                        <AntDesign name="plus" size={15} color='orange' onPress={increaseQuantity}/>
                     </View>
                 </View>
             </View>
