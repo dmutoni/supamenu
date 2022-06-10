@@ -6,12 +6,12 @@ import { FlatList, ListRenderItem, ScrollView, TouchableOpacity } from 'react-na
 import { Fontisto } from '@expo/vector-icons';
 import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
-import { IItems, RootTabScreenProps, TWishListParam } from '../types';
+import { IItems, RootStackScreenProps, RootTabScreenProps, TWishListParam } from '../types';
 import Back from '../components/Back';
 import { PriceContextProvider, useTotalPrice } from '../context/PriceContext';
 import TotalPrice from '../components/TotalPrice';
 
-export default function WishListScreen({ navigation, route }: RootTabScreenProps<'Cart'>) {
+export default function WishListScreen({ navigation, route }: RootStackScreenProps<'WishList'>) {
     const itemsData: TWishListParam = route?.params as unknown as TWishListParam;
     const [initialPrice, setInitialPrice] = useState(itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0));
     const [newItems, setNewItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 1 })));
@@ -19,7 +19,7 @@ export default function WishListScreen({ navigation, route }: RootTabScreenProps
 
     const tailwind = useTailwind();
 
-    const {dispatch} = useTotalPrice()
+    const { dispatch } = useTotalPrice()
 
     useEffect(() => {
         dispatch({ type: "SET", price: initialPrice })
@@ -27,7 +27,7 @@ export default function WishListScreen({ navigation, route }: RootTabScreenProps
 
     const renderItem = ({ item }: { item: IItems }) => (
         <View style={tailwind('py-2')}>
-            <WishItemScreen name={item.name} ingredients={[item.description]} price={item.unitPrice} amount={item.quantity} currency={'RWF'}  />
+            <WishItemScreen name={item.name} ingredients={[item.description]} price={item.unitPrice} amount={item.quantity} currency={'RWF'} />
         </View>
     )
     const popAction = StackActions.pop(1);
@@ -51,11 +51,9 @@ export default function WishListScreen({ navigation, route }: RootTabScreenProps
                     <Text style={tailwind('text-xl font-bold text-orange mr-4')}>more drinks</Text>
                     <Fontisto name="arrow-right-l" size={30} color="orange" />
                 </View>
-                <View style={tailwind('flex flex-row justify-between my-6')}>
-                  <TotalPrice/>
-                </View>
-                {/* <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} /> */}
+                <TotalPrice />
+                <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} />
             </View>
-            </View>
+        </View>
     )
 }

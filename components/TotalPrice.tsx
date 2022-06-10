@@ -11,7 +11,7 @@ export default function TotalPrice() {
     const {state} = useTotalPrice()
 
   return (
-    <View>
+    <View style={tailwind('flex flex-row justify-between my-6')}>
         <Text style={tailwind('font-bold text-xl')}>Total</Text>
         <Text style={tailwind('font-bold text-orange text-xl')}>Frw {state.totalPrice}</Text>
     </View>
