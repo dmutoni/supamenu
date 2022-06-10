@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Image, Text, TextInput } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist';
 import { AntDesign } from '@expo/vector-icons';
+import { useTotalPrice } from '../context/PriceContext';
 
 export interface IItemProps {
     name: string;
@@ -14,14 +15,19 @@ export interface IItemProps {
 
 export default function WishItemScreen({ name, ingredients, price, amount, currency = 'FRW', onChangePrice }: IItemProps) {
     
+    const {dispatch} = useTotalPrice()
+
     const [quantity, setQuantity] = React.useState(amount);
+
     const decreaseQuantity = () => {
         if (quantity > 0) {
             setQuantity(quantity - 1);
+            dispatch({type: "DECREASE", price: price})
         }
     }
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
+        dispatch({type: "INCREASE", price})
     }
     const tailwind = useTailwind();
     return (
@@ -37,7 +43,7 @@ export default function WishItemScreen({ name, ingredients, price, amount, curre
                     <View style={tailwind('flex flex-row')}>
                         <Text style={tailwind('text-orange font-bold text-lg mr-1')}>{currency}</Text>
 
-                        <Text style={tailwind('text-orange font-bold text-lg')}>{price * quantity}</Text>
+                        <Text style={tailwind('text-orange font-bold text-lg')}>{quantity * price}</Text>
                     </View>
                     <View style={tailwind('flex flex-row bg-white px-2 h-8 rounded-md justify-center items-center')}>
                         <AntDesign name="minus" size={15} color='orange' onPress={decreaseQuantity}/>

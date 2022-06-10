@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, View } from '../components/Themed'
 import WishItemScreen, { IItemProps } from '../components/WishItemScreen'
 import { useTailwind } from 'tailwind-rn/dist';
@@ -8,14 +8,22 @@ import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
 import { IItems, RootTabScreenProps, TWishListParam } from '../types';
 import Back from '../components/Back';
+import { PriceContextProvider, useTotalPrice } from '../context/PriceContext';
+import TotalPrice from '../components/TotalPrice';
 
 export default function WishListScreen({ navigation, route }: RootTabScreenProps<'Cart'>) {
     const itemsData: TWishListParam = route?.params as unknown as TWishListParam;
-    const initialPrice = itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0);
-    const [totalPrice, setTotalPrice] = useState(initialPrice);
+    const [initialPrice, setInitialPrice] = useState(itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0));
     const [newItems, setNewItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 1 })));
 
+
     const tailwind = useTailwind();
+
+    const {dispatch} = useTotalPrice()
+
+    useEffect(() => {
+        dispatch({ type: "SET", price: initialPrice })
+    }, [initialPrice])
 
     const renderItem = ({ item }: { item: IItems }) => (
         <View style={tailwind('py-2')}>
@@ -44,11 +52,10 @@ export default function WishListScreen({ navigation, route }: RootTabScreenProps
                     <Fontisto name="arrow-right-l" size={30} color="orange" />
                 </View>
                 <View style={tailwind('flex flex-row justify-between my-6')}>
-                    <Text style={tailwind('font-bold text-xl')}>Total</Text>
-                    <Text style={tailwind('font-bold text-orange text-xl')}>Frw {totalPrice}</Text>
+                  <TotalPrice/>
                 </View>
                 {/* <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} /> */}
             </View>
-        </View>
+            </View>
     )
 }
