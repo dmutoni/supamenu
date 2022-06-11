@@ -172,3 +172,51 @@ export interface IMenuCategoryResponse {
   category: IMenuCategory,
   items: IItems[]
 }
+
+export interface IOrderItemRequest {
+  item: number,
+  quantity: number
+}
+
+export interface IOrderRequest {
+  orderDetails: IOrderItemRequest[],
+  orderType: string,
+  seat: number,
+  status: string, 
+}
+
+export interface IUser {
+  id: number,
+  firstName: string,
+  lastName: string,
+  fullName: string,
+  username: string,
+  mobile: string,
+  email: string
+}
+
+// export interface IServiceProvider {
+//   id: number,
+//   name: string,
+//   address: string,
+//   email: string,
+// }
+
+export interface IOrderResponse {
+  id: number,
+  orderDetails: [
+    {
+      id: number,
+      item: IItems,
+      quantity: number,
+      totalPrice: number,
+    },
+  ],
+  // customer:  IUser,
+  // orderType: string,
+  // seat: number,
+  // status: string,
+  // resto: RestoDetails,
+  // createdAt: string,
+  // updatedAt: string,
+}

@@ -24,11 +24,6 @@
   margin-right: 1rem
 }
 
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem
-}
-
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem
@@ -52,6 +47,11 @@
 .my-28 {
   margin-top: 7rem;
   margin-bottom: 7rem
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem
 }
 
 .my-4 {

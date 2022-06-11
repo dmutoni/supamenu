@@ -1,16 +1,21 @@
 import React from "react"
 
-type State = { totalPrice: number }
-type Action =   { type: "INCREASE" | "DECREASE" | "SET", price: number } 
-type Dispatch = (action: Action) => void 
+type orderItem = {
+  item: number,
+  quantity: number
+}
 
-export const PriceContext = React.createContext<{state: State, dispatch: Dispatch } | undefined>(undefined)
+type State = { totalPrice: number, orderItems: orderItem[] }
+type Action = { type: "INCREASE" | "DECREASE" | "SET", price: number, item: number, quantity: number }
+type Dispatch = (action: Action) => void
+
+export const PriceContext = React.createContext<{ state: State, dispatch: Dispatch, } | undefined>(undefined)
 
 
 export function useTotalPrice() {
   const priceContext = React.useContext(PriceContext)
 
-  if(priceContext === undefined) {
+  if (priceContext === undefined) {
     throw new Error("PriceContextProvider is not available")
   }
 
@@ -18,22 +23,46 @@ export function useTotalPrice() {
 }
 
 function totalPriceReducer(state: State, action: Action) {
-    switch (action.type) {
-     case "INCREASE":
-         return { totalPrice: state.totalPrice + action.price }
-     case "DECREASE":
-         return { totalPrice: state.totalPrice - action.price }
-      case "SET":
-         return { totalPrice: action.price }
-    }
- }
+  switch (action.type) {
+    case "INCREASE":
+      return {
+        totalPrice: state.totalPrice + action.price, orderItems: state.orderItems?.map(item => {
+          if (item.quantity !== undefined && item.item === action.item) {
+            item.quantity += 1
+            return item
+          }
+          state.orderItems.push({ item: action.item, quantity: action.quantity })
+          return item
+        })
+      }
+    case "DECREASE":
+      return {
+        totalPrice: state.totalPrice - action.price, orderItems: state.orderItems.map(item => {
+          if (item.quantity !== undefined && item.item === action.item) {
+            item.quantity += 1
+            return item
+          }
+          state.orderItems?.push({ item: action.item, quantity: action.quantity })
+          return item
+        })
+      }
+    case "SET":
+      return {
+        totalPrice: action.price, orderItems: state.orderItems.map(item => {
+          state.orderItems.push({ item: action.item, quantity: action.quantity })
+          return item
+        })
+      }
+  }
+}
 
 export function PriceContextProvider({ children }: { children: React.ReactNode }) {
-     const [state, dispatch] = React.useReducer(totalPriceReducer, { totalPrice: 0 })
 
-     const value = {state, dispatch}
+  const [state, dispatch] = React.useReducer(totalPriceReducer, { totalPrice: 0, orderItems: [] })
 
-     return <PriceContext.Provider value={value}>{children}</PriceContext.Provider>
+  const value = { state, dispatch }
+
+  return <PriceContext.Provider value={value}>{children}</PriceContext.Provider>
 }
 
 

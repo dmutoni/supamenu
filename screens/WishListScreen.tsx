@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View } from '../components/Themed'
-import WishItemScreen, { IItemProps } from '../components/WishItemScreen'
+import WishItemScreen from '../components/WishItemScreen'
 import { useTailwind } from 'tailwind-rn/dist';
-import { FlatList, ListRenderItem, ScrollView, TouchableOpacity } from 'react-native';
+import { FlatList } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
-import { IItems, RootStackScreenProps, RootTabScreenProps, TWishListParam } from '../types';
+import { IItems, RootStackScreenProps, TWishListParam } from '../types';
 import Back from '../components/Back';
 import { PriceContextProvider, useTotalPrice } from '../context/PriceContext';
 import TotalPrice from '../components/TotalPrice';
@@ -16,18 +16,21 @@ export default function WishListScreen({ navigation, route }: RootStackScreenPro
     const [initialPrice, setInitialPrice] = useState(itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0));
     const [newItems, setNewItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 1 })));
 
-
     const tailwind = useTailwind();
 
-    const { dispatch } = useTotalPrice()
+    const { dispatch, state } = useTotalPrice();
 
     useEffect(() => {
-        dispatch({ type: "SET", price: initialPrice })
-    }, [initialPrice])
+        itemsData.item.forEach((item) => {
+            dispatch({ type: "SET", price: initialPrice, item: item.id, quantity: 0 })
+        })
+    }, [initialPrice]);
+
+    console.log(...new Set(state.orderItems));
 
     const renderItem = ({ item }: { item: IItems }) => (
         <View style={tailwind('py-2')}>
-            <WishItemScreen name={item.name} ingredients={[item.description]} price={item.unitPrice} amount={item.quantity} currency={'RWF'} />
+            <WishItemScreen id={item.id} name={item.name} ingredients={[item.description]} price={item.unitPrice} amount={item.quantity} currency={'RWF'} />
         </View>
     )
     const popAction = StackActions.pop(1);

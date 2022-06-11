@@ -3,7 +3,6 @@ import { ILogin, ISignUp, LoginResponse } from "../types"
 import { url } from "../utils/url"
 
 const login = async (body: ILogin): Promise<AxiosResponse<LoginResponse>> => {
-    console.log(`${url}/auth/admin`)
     return await axios.post(`${url}/auth/signin`, body);
 }
 

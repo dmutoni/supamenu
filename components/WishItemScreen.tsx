@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { useTotalPrice } from '../context/PriceContext';
 
 export interface IItemProps {
+    id: number;
     name: string;
     ingredients: string[];
     price: number;
@@ -13,22 +14,25 @@ export interface IItemProps {
     onChangePrice?: (text: string) => void;
 }
 
-export default function WishItemScreen({ name, ingredients, price, amount, currency = 'FRW', onChangePrice }: IItemProps) {
+export default function WishItemScreen({ id, name, ingredients, price, amount, currency = 'FRW', onChangePrice }: IItemProps) {
     
-    const {dispatch} = useTotalPrice()
+    const {dispatch, state} = useTotalPrice()
 
     const [quantity, setQuantity] = React.useState(amount);
 
     const decreaseQuantity = () => {
         if (quantity > 0) {
             setQuantity(quantity - 1);
-            dispatch({type: "DECREASE", price: price})
+            dispatch({type: "DECREASE", price: price, item: id, quantity: quantity})
         }
     }
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
-        dispatch({type: "INCREASE", price})
+        dispatch({type: "INCREASE", price, item: id, quantity: quantity})
     }
+
+    console.log(state);
+
     const tailwind = useTailwind();
     return (
         <View style={tailwind('flex flex-row bg-gray-100 h-24 rounded-xl p-2')}>

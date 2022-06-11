@@ -40,12 +40,6 @@
 			"marginRight": 16
 		}
 	},
-	"my-6": {
-		"style": {
-			"marginTop": 24,
-			"marginBottom": 24
-		}
-	},
 	"my-2": {
 		"style": {
 			"marginTop": 8,
@@ -74,6 +68,12 @@
 		"style": {
 			"marginTop": 112,
 			"marginBottom": 112
+		}
+	},
+	"my-6": {
+		"style": {
+			"marginTop": 24,
+			"marginBottom": 24
 		}
 	},
 	"my-4": {
