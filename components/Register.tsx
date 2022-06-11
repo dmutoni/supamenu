@@ -67,7 +67,6 @@ export default function Register() {
                 // goToLogin();
             }
         }).catch((error) => {
-            console.log(error.response.data);
             Alert.alert('Error', error?.response?.data?.apierror?.message || 'Something went wrong');
             setIsLoading(false);
         })

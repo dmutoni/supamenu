@@ -2,34 +2,77 @@ import React, { useEffect, useState } from 'react'
 import { Text, View } from '../components/Themed'
 import WishItemScreen from '../components/WishItemScreen'
 import { useTailwind } from 'tailwind-rn/dist';
-import { FlatList } from 'react-native';
+import { Alert, FlatList } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
-import { IItems, RootStackScreenProps, TWishListParam } from '../types';
+import { IItems, IOrderItemRequest, IOrderRequest, RootStackScreenProps, TWishListParam } from '../types';
 import Back from '../components/Back';
 import { PriceContextProvider, useTotalPrice } from '../context/PriceContext';
 import TotalPrice from '../components/TotalPrice';
+import { makeOrderApi } from '../services/menu';
 
 export default function WishListScreen({ navigation, route }: RootStackScreenProps<'WishList'>) {
     const itemsData: TWishListParam = route?.params as unknown as TWishListParam;
     const [initialPrice, setInitialPrice] = useState(itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0));
-    const [newItems, setNewItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 1 })));
-
+    const [newItems, setNewItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 0 })));
+    const [itemsMap, setItemsMap] = useState([]);
     const tailwind = useTailwind();
 
     const { dispatch, state } = useTotalPrice();
 
     useEffect(() => {
-        itemsData.item.forEach((item) => {
-            dispatch({ type: "SET", price: initialPrice })
-        })
+        dispatch({ type: "SET", price: 0 })
+
+        let newObj: any = { ...itemsMap };
+    
+        for (let i = 0; i < itemsData.item.length; i++) {
+            newObj[itemsData.item[i].id.toString()] = 0;
+        }
+        setItemsMap(newObj);
     }, [initialPrice]);
 
+    const makeOrder = async () => {
+        try {
+            let orderDetails = [];
+
+            let keys: any = Object.keys(itemsMap);
+
+            for (let i = 0; i < keys.length; i++) {
+                orderDetails.push({
+                    item: parseInt(keys[i]),
+                    quantity: itemsMap[keys[i]],
+                });
+            }
+
+            const orderDTO: IOrderRequest  = {
+                orderType: "BOOKING",
+                seat: 0,
+                status: "ORDERING",
+                orderDetails,
+            };
+
+            try {
+                const result = await makeOrderApi(orderDTO);
+
+                // navigation.navigate("CheckOut", {
+                //     orderInfo: result.data.id,
+                // });
+
+                Alert.alert("Sucsess", "Order booked successfully");
+                navigation.navigate('Checkout', {id: result.data.id});
+
+            } catch (error: any) {
+                Alert.alert("Error", "Order wasn't booked sucessfylly");
+            }
+        } catch (error: any) {
+            return Alert.alert("Bad Request", error.response.data);
+        }
+    }
 
     const renderItem = ({ item }: { item: IItems }) => (
         <View style={tailwind('py-2')}>
-            <WishItemScreen id={item.id} name={item.name} ingredients={[item.description]} price={item.unitPrice} amount={item.quantity} currency={'RWF'} />
+            <WishItemScreen id={item.id} setItemsMap={setItemsMap} name={item.name} ingredients={[item.description]} price={item.unitPrice} amount={item.quantity} currency={'RWF'} />
         </View>
     )
     const popAction = StackActions.pop(1);
@@ -54,7 +97,7 @@ export default function WishListScreen({ navigation, route }: RootStackScreenPro
                     <Fontisto name="arrow-right-l" size={30} color="orange" />
                 </View>
                 <TotalPrice />
-                <Button title='Proceed to checkout' onPress={() => navigation.navigate('Checkout')} />
+                <Button title='Proceed to checkout' onPress={() => makeOrder()} />
             </View>
         </View>
     )

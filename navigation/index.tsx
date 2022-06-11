@@ -63,9 +63,9 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
       <Stack.Screen name="ChooseMenu" component={ChooseMenuScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
       <Stack.Screen name="CheckForDetails" component={CheckForDetailsScreen} options={{ headerShown: false }} />
       <Stack.Screen name="WishList" component={WishListScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
       <Stack.Screen name="FeedBack" component={FeedBackScreen} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>

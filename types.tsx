@@ -22,7 +22,9 @@ export type RootStackParamList = {
   Login: undefined;
   Register: undefined;
   NearbyResto: TRestoParam;
-  Checkout: undefined;
+  Checkout: {
+    id: number
+  };
   CheckForDetails: undefined;
   FeedBack: undefined;
   WishList: TWishListParam;

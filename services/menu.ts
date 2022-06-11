@@ -14,7 +14,7 @@ const getMenuCategories = async (id: number): Promise<AxiosResponse<IMenuCategor
     });
 }
 
-const makeOrder = async (body: IOrderRequest): Promise<AxiosResponse<IOrderResponse>> => {
+const makeOrderApi = async (body: IOrderRequest): Promise<AxiosResponse<IOrderResponse>> => {
     const token = await getToken();
 
     return await axios.post(`${url}/orders`,body, {
@@ -27,4 +27,4 @@ const makeOrder = async (body: IOrderRequest): Promise<AxiosResponse<IOrderRespo
 // const payOrder = async(): Promise<AxiosResponse<>> => {
 //     const token = await getToken();
 // }
-export { getMenuCategories, makeOrder }
+export { getMenuCategories, makeOrderApi }

@@ -12,9 +12,10 @@ export interface IItemProps {
     amount: number;
     currency: string;
     onChangePrice?: (text: string) => void;
+    setItemsMap: (itemsMap: any) => void;
 }
 
-export default function WishItemScreen({ id, name, ingredients, price, amount, currency = 'FRW', onChangePrice }: IItemProps) {
+export default function WishItemScreen({ id, name, ingredients, price, amount, currency = 'FRW', setItemsMap }: IItemProps) {
     
     const {dispatch, state} = useTotalPrice()
 
@@ -23,15 +24,21 @@ export default function WishItemScreen({ id, name, ingredients, price, amount, c
     const decreaseQuantity = () => {
         if (quantity > 0) {
             setQuantity(quantity - 1);
+            setItemsMap((state: any) => {
+                state[id] = quantity - 1;
+                return state;
+            });
             dispatch({type: "DECREASE", price: price})
         }
     }
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
+        setItemsMap((state: any) => {
+            state[id] = quantity + 1;
+            return state;
+        });
         dispatch({type: "INCREASE", price })
     }
-
-    console.log(state);
 
     const tailwind = useTailwind();
     return (
