@@ -6,16 +6,16 @@ import { Alert, FlatList } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import Button from '../components/Button';
 import { StackActions } from '@react-navigation/native';
-import { IItems, IOrderItemRequest, IOrderRequest, RootStackScreenProps, TWishListParam } from '../types';
+import { IItems, IOrderRequest, RootStackScreenProps, TWishListParam } from '../types';
 import Back from '../components/Back';
-import { PriceContextProvider, useTotalPrice } from '../context/PriceContext';
+import { useTotalPrice } from '../context/PriceContext';
 import TotalPrice from '../components/TotalPrice';
 import { makeOrderApi } from '../services/menu';
 
 export default function WishListScreen({ navigation, route }: RootStackScreenProps<'WishList'>) {
     const itemsData: TWishListParam = route?.params as unknown as TWishListParam;
-    const [initialPrice, setInitialPrice] = useState(itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0));
-    const [newItems, setNewItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 0 })));
+    const [initialPrice] = useState(itemsData.item.reduce((acc, cur) => acc + cur.unitPrice, 0));
+    const [newItems] = useState(itemsData.item.map((item) => ({ ...item, quantity: 0 })));
     const [itemsMap, setItemsMap] = useState([]);
     const tailwind = useTailwind();
 
@@ -25,7 +25,7 @@ export default function WishListScreen({ navigation, route }: RootStackScreenPro
         dispatch({ type: "SET", price: 0 })
 
         let newObj: any = { ...itemsMap };
-    
+
         for (let i = 0; i < itemsData.item.length; i++) {
             newObj[itemsData.item[i].id.toString()] = 0;
         }
@@ -45,7 +45,7 @@ export default function WishListScreen({ navigation, route }: RootStackScreenPro
                 });
             }
 
-            const orderDTO: IOrderRequest  = {
+            const orderDTO: IOrderRequest = {
                 orderType: "BOOKING",
                 seat: 0,
                 status: "ORDERING",
@@ -54,13 +54,12 @@ export default function WishListScreen({ navigation, route }: RootStackScreenPro
 
             try {
                 const result = await makeOrderApi(orderDTO);
-
-                // navigation.navigate("CheckOut", {
-                //     orderInfo: result.data.id,
-                // });
-
-                Alert.alert("Sucsess", "Order booked successfully");
-                navigation.navigate('Checkout', {id: result.data.id});
+                if (state.totalPrice == 0) {
+                    Alert.alert("Error", "The cart is empty");
+                } else {
+                    Alert.alert("Sucsess", "Order booked successfully");
+                    navigation.navigate('Checkout', { id: result.data.id });
+                }
 
             } catch (error: any) {
                 Alert.alert("Error", "Order wasn't booked sucessfylly");

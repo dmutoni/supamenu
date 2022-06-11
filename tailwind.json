@@ -28,6 +28,14 @@
 			"marginLeft": 16
 		}
 	},
+	"m-5": {
+		"style": {
+			"marginTop": 20,
+			"marginRight": 20,
+			"marginBottom": 20,
+			"marginLeft": 20
+		}
+	},
 	"my-5": {
 		"style": {
 			"marginTop": 20,
@@ -233,6 +241,11 @@
 			"height": 32
 		}
 	},
+	"h-48": {
+		"style": {
+			"height": 192
+		}
+	},
 	"w-full": {
 		"style": {
 			"width": "100%"
@@ -296,6 +309,11 @@
 	"w-60": {
 		"style": {
 			"width": 240
+		}
+	},
+	"w-48": {
+		"style": {
+			"width": 192
 		}
 	},
 	"flex-row": {
@@ -551,6 +569,12 @@
 		"style": {
 			"paddingLeft": 8,
 			"paddingRight": 8
+		}
+	},
+	"py-3": {
+		"style": {
+			"paddingTop": 12,
+			"paddingBottom": 12
 		}
 	},
 	"pt-12": {
