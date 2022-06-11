@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Alert, Image, ScrollView } from 'react-native';
 import { useTailwind } from 'tailwind-rn/dist';
 import Button from './Button';
@@ -13,6 +13,7 @@ import Validator from "validatorjs";
 import en from "validatorjs/src/lang/en"
 import { login } from '../services/authentication';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Login() {
     const tailwind = useTailwind();
@@ -20,6 +21,8 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+    const {setIsLoggedIn} = useContext(AuthContext)
 
     const goRoot = () => {
         navigation.navigate('Root');
@@ -60,6 +63,7 @@ export default function Login() {
                 };
                 _storeData(data);
                 setIsLoading(false);
+                setIsLoggedIn(true)
                 goRoot();
             }
         }).catch((error) => {

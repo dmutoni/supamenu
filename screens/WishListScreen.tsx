@@ -22,11 +22,10 @@ export default function WishListScreen({ navigation, route }: RootStackScreenPro
 
     useEffect(() => {
         itemsData.item.forEach((item) => {
-            dispatch({ type: "SET", price: initialPrice, item: item.id, quantity: 0 })
+            dispatch({ type: "SET", price: initialPrice })
         })
     }, [initialPrice]);
 
-    console.log(...new Set(state.orderItems));
 
     const renderItem = ({ item }: { item: IItems }) => (
         <View style={tailwind('py-2')}>

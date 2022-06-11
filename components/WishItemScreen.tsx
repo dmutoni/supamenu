@@ -23,12 +23,12 @@ export default function WishItemScreen({ id, name, ingredients, price, amount, c
     const decreaseQuantity = () => {
         if (quantity > 0) {
             setQuantity(quantity - 1);
-            dispatch({type: "DECREASE", price: price, item: id, quantity: quantity})
+            dispatch({type: "DECREASE", price: price})
         }
     }
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
-        dispatch({type: "INCREASE", price, item: id, quantity: quantity})
+        dispatch({type: "INCREASE", price })
     }
 
     console.log(state);

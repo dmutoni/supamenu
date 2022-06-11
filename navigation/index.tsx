@@ -29,19 +29,27 @@ import FeedBackScreen from '../screens/FeedBackScreen';
 import ChooseMenuScreen from '../screens/ChooseMenuScreen';
 import ScannerScreen from '../screens/ScannerScreen';
 import WishItemScreen from '../components/WishItemScreen';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+
+  const {isLoggedIn} = React.useContext(AuthContext)
+
   return (
     <TailwindProvider utilities={utilities}>
       <NavigationContainer
         linking={LinkingConfiguration}
         theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <RootNavigator />
+        {
+          isLoggedIn ? <RootNavigator /> : <AuthNavigator />
+        }
       </NavigationContainer>
     </TailwindProvider>
 
   );
 }
+
+
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
@@ -52,10 +60,8 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
-      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="NearbyResto" component={NearbyResto} options={{ headerShown: false }} />
       <Stack.Screen name="ChooseMenu" component={ChooseMenuScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
       <Stack.Screen name="CheckForDetails" component={CheckForDetailsScreen} options={{ headerShown: false }} />
@@ -67,6 +73,17 @@ function RootNavigator() {
       </Stack.Group>
     </Stack.Navigator>
   );
+}
+
+const AuthStack = createNativeStackNavigator<RootStackParamList>();
+
+function AuthNavigator() {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+      <AuthStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+    </AuthStack.Navigator>
+  )
 }
 
 /**
